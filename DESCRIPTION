@@ -1,18 +1,22 @@
 Package: onsr
-Title: What the Package Does (One Line, Title Case)
+Title: Client for the 'ONS' API
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kostas",
            family = "Vasilopoulos",
            role = c("aut", "cre"),
            email = "k.vasilopoulo@gmail.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+Description: Client for the 'Office of National Statistics'
+    ('ONS') API <https://api.beta.ons.gov.uk/v1>.  
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
     httr,
     glue,
-    jsonlite
+    jsonlite,
+    readr,
+    tibble
 URL: https://github.com/kvasilopoulos/onsr
 BugReports: https://github.com/kvasilopoulos/onsr/issues
+RoxygenNote: 7.1.1
