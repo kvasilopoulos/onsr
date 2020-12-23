@@ -1,9 +1,10 @@
 #' @importFrom httr GET stop_for_status
-#' @importFrom httr GET
+#' @importFrom tibble tibble as_tibble
 #' @export
 #' @examples
 #'
 #' ons_dataset(id = "ageing-population-estimates", edition = "time-series", version = 1)
+#' ons_dataset(id = "ageing-population-estimates")
 #'
 #' ons_dataset_dims(id = "cpih01", edition = "time-series", version = 3)
 #'
@@ -56,6 +57,8 @@ ons_latest_href <- function(id = NULL) {
 
 
 #' @rdname ons_datasets
+#' @importFrom readr read_csv
+#'
 #' @export
 #' @examples
 #' ons_dataset(id = "ageing-population-estimates", edition = "time-series", version = 1)

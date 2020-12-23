@@ -39,13 +39,13 @@ make_request <- function(query) {
 #' @importFrom httr content
 #' @importFrom jsonlite fromJSON
 process_response <- function(res) {
-  content(res, as = "text", encoding = "UTF-8") %>%
-    fromJSON(simplifyVector = TRUE)
+  ct <- content(res, as = "text", encoding = "UTF-8")
+  fromJSON(ct, simplifyVector = TRUE)
 }
 
 
-library(httr)
-library(jsonlite)
+# library(httr)
+# library(jsonlite)
 
 
 
