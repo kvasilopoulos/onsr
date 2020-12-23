@@ -14,3 +14,5 @@ Imports:
     httr,
     glue,
     jsonlite
+URL: https://github.com/kvasilopoulos/onsr
+BugReports: https://github.com/kvasilopoulos/onsr/issues
