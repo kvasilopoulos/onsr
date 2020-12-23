@@ -71,7 +71,7 @@ ons_dataset <- function(id = NULL, edition = NULL, version = NULL) {
   }
   res <- make_request(req)
   raw <- process_response(res)
-  readr::read_csv(raw$downloads$csv$href)
+  read_csv_silent(raw$downloads$csv$href)
 }
 
 #' @rdname ons_datasets
