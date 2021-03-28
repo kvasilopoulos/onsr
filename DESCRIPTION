@@ -15,8 +15,11 @@ Imports:
     httr,
     glue,
     jsonlite,
-    readr,
+    vroom,
     tibble
-URL: https://github.com/kvasilopoulos/onsr
+URL: https://kvasilopoulos.github.io/onsr, https://github.com/kvasilopoulos/onsr
 BugReports: https://github.com/kvasilopoulos/onsr/issues
 RoxygenNote: 7.1.1
+Suggests: 
+    data.table,
+    readr

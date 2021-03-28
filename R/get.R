@@ -2,12 +2,22 @@ endpoint <- "https://api.beta.ons.gov.uk/v1"
 
 EMPTY <- ""
 
+set_endpoint <- function(query) {
+  paste(endpoint, query, sep = "/")
+}
+
 #' @examples
 #'
 #' build_request(editions = 4, versions = 3)
 #' build_request(editions = 4, versions = EMPTY) #does not handle ok
 #' build_request(editions = 4, versions = NULL)
 build_request <- function(...) {
+  param_chunks <- build_request_dots(...)
+  query <- paste(param_chunks, collapse = "/")
+  set_endpoint(query)
+}
+
+build_request_dots <- function(...) {
   params <- list(...)
   plen <- length(params)
   param_chunks <- vector("character", plen)
@@ -21,19 +31,45 @@ build_request <- function(...) {
       param_chunks[i] <-  paste(names(params)[i],  pm, sep = "/")
     }
   }
-  query <- paste(param_chunks, collapse = "/")
-  set_endpoint(query)
+  param_chunks
 }
 
-set_endpoint <- function(query) {
-  paste(endpoint, query, sep = "/")
+extend_request_dots <- function(pre, ...) {
+  param_chunks <- build_request_dots(...)
+  append <- paste(param_chunks, collapse = "/")
+  paste(pre, append, sep = "/")
 }
 
 
-#' @importFrom httr GET
+try_GET <- function(x, ...) {
+  tryCatch(
+    RETRY("GET", url = x, timeout(10),  quiet = TRUE,...),
+    error = function(err) conditionMessage(err),
+    warning = function(warn) conditionMessage(warn)
+  )
+}
+is_response <- function(x) {
+  class(x) == "response"
+}
+
+#' @importFrom httr GET RETRY write_disk timeout
 make_request <- function(query) {
-  res <- GET(query)
-  httr::stop_for_status(res)
+
+  if (!curl::has_internet()) {
+    message("No internet connection.")
+    return(invisible(NULL))
+  }
+  resp <- try_GET(query)
+  return(resp)
+  if (!is_response(resp)) {
+    message(resp)
+    return(invisible(NULL))
+  }
+  if (httr::http_error(resp)) { # network is down = message (not an error anymore)
+    httr::message_for_status(resp)
+    return(invisible(NULL))
+  }
+  resp
 }
 
 #' @importFrom httr content
@@ -42,35 +78,4 @@ process_response <- function(res) {
   ct <- content(res, as = "text", encoding = "UTF-8")
   fromJSON(ct, simplifyVector = TRUE)
 }
-
-
-# library(httr)
-# library(jsonlite)
-
-
-
-
-
-
-# beta --------------------------------------------------------------------
-
-
-# GET(paste0(endpoint_beta, "/datasets")) %>%
-#   content( as = "text", encoding = "UTF-8") %>%
-#   jsonlite::fromJSON( flatten = TRUE) %>%
-#   .$items %>%
-#   as_tibble() %>%
-#   rename_all(list(~gsub("\\.", ":", .)))
-#
-# GET(paste0(endpoint_beta, "/code-lists")) %>%
-#   content( as = "text", encoding = "UTF-8") %>%
-#   jsonlite::fromJSON( flatten = TRUE) %>%
-#   .$items %>%
-#   as_tibble()
-#
-# GET(paste0(endpoint_beta, "/code-lists/adult-sex")) %>%
-#   content( as = "text", encoding = "UTF-8") %>%
-#   jsonlite::fromJSON( flatten = FALSE) %>% str()
-#   as_tibble()
-
 
