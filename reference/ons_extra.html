@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ONS Datasets — ons_datasets • onsr</title>
+<title>Extra — ons_extra • onsr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="ONS Datasets — ons_datasets" />
-<meta property="og:description" content="Used to find information about data published by the ONS." />
+<meta property="og:title" content="Extra — ons_extra" />
+<meta property="og:description" content="Extra" />
 
 
 
@@ -111,32 +111,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ONS Datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/01-datasets.R'><code>R/01-datasets.R</code></a></small>
-    <div class="hidden name"><code>ons_datasets.Rd</code></div>
+    <h1>Extra</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/02-get.R'><code>R/02-get.R</code></a></small>
+    <div class="hidden name"><code>ons_extra.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Used to find information about data published by the ONS.</p>
+    <p>Extra</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_datasets</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>ons_ids</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>ons_lookout</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, desc <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>ons_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ons_get_dims</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-
-<span class='fu'>ons_lookout</span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_lookout("cpih01"): could not find function "ons_lookout"</span></div><div class='input'><span class='fu'>ons_lookout</span><span class='op'>(</span><span class='st'>"ageing-population-estimates"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_lookout("ageing-population-estimates"): could not find function "ons_lookout"</span></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
