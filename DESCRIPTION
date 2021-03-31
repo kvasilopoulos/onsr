@@ -13,13 +13,13 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     httr,
-    glue,
     jsonlite,
-    vroom,
+    readr,
     tibble
 URL: https://kvasilopoulos.github.io/onsr, https://github.com/kvasilopoulos/onsr
 BugReports: https://github.com/kvasilopoulos/onsr/issues
 RoxygenNote: 7.1.1
 Suggests: 
     data.table,
-    readr
+    vroom
+Roxygen: list(markdown = TRUE)

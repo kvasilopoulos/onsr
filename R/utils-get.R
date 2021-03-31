@@ -6,14 +6,29 @@ set_endpoint <- function(query) {
   paste(endpoint, query, sep = "/")
 }
 
-#' @examples
-#'
-#' build_request(editions = 4, versions = 3)
-#' build_request(editions = 4, versions = EMPTY) #does not handle ok
-#' build_request(editions = 4, versions = NULL)
-build_request <- function(...) {
-  param_chunks <- build_request_dots(...)
-  query <- paste(param_chunks, collapse = "/")
+
+
+assert_valid_id <- function(id = NULL, ons_ds = ons_datasets()) {
+  if(is.null(id)){
+    stop("You must specify a `id`, see `ons_ids()`", call. = FALSE)
+  }
+  if(!id %in% ons_ds$id) {
+    stop("Invalid `id` see `ons_ids()`.", call. = FALSE)
+  }
+}
+
+# Build Request -----------------------------------------------------------
+
+
+build_request <- function(id, edition = NULL, version = NULL) {
+  assert_valid_id(id)
+  edition <- edition %||% ons_latest_edition(id)
+  version <- version %||% ons_latest_version(id)
+  build_base_request(datasets = id, editions = edition, versions = version)
+}
+
+build_base_request <- function(...) {
+  query <- build_request_dots(...)
   set_endpoint(query)
 }
 
@@ -28,22 +43,25 @@ build_request_dots <- function(...) {
     }else if(pm == EMPTY){
       param_chunks[i] <- names(params)[i]
     }else{
-      param_chunks[i] <-  paste(names(params)[i],  pm, sep = "/")
+      param_chunks[i] <-  paste(names(params)[i], pm, sep = "/")
     }
   }
-  param_chunks
+  is_empty <- param_chunks == EMPTY
+  paste(param_chunks[!is_empty], collapse = "/")
 }
 
 extend_request_dots <- function(pre, ...) {
-  param_chunks <- build_request_dots(...)
-  append <- paste(param_chunks, collapse = "/")
+  append <- build_request_dots(...)
   paste(pre, append, sep = "/")
 }
 
+# Make Request ------------------------------------------------------------
 
-try_GET <- function(x, ...) {
+
+try_GET <- function(x, limit, offset, ...) {
   tryCatch(
-    RETRY("GET", url = x, timeout(10),  quiet = TRUE,...),
+    RETRY("GET", url = x, timeout(10), quiet = TRUE,
+          query = list(limit = limit, offset = offset), ...),
     error = function(err) conditionMessage(err),
     warning = function(warn) conditionMessage(warn)
   )
@@ -53,13 +71,13 @@ is_response <- function(x) {
 }
 
 #' @importFrom httr GET RETRY write_disk timeout
-make_request <- function(query) {
+make_request <- function(query, limit = NULL, offset = NULL, ...) {
 
   if (!curl::has_internet()) {
     message("No internet connection.")
     return(invisible(NULL))
   }
-  resp <- try_GET(query)
+  resp <- try_GET(query, limit = limit, offset = offset, ...)
   return(resp)
   if (!is_response(resp)) {
     message(resp)
@@ -71,6 +89,9 @@ make_request <- function(query) {
   }
   resp
 }
+
+# Response ----------------------------------------------------------------
+
 
 #' @importFrom httr content
 #' @importFrom jsonlite fromJSON

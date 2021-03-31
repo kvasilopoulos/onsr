@@ -5,10 +5,37 @@ template:
   params:
     bootswatch: cosmo
 
-
 authors:
   Kostas Vasilopoulos:
     href: https://kvasilopoulos.com/
+
+reference:
+
+  - title: Get
+    contents:
+      - ons_get
+      - ons_extra
+
+  - title: Package
+    desc: >
+      Estimation & Critical Values
+    contents:
+      - ons_datasets
+      - ons_latest
+
+  - title: Hierarchies
+    contents:
+    - ons_hierarchies
+
+  - title: Codelists & Codes
+    contents:
+      - ons_codelists
+      - ons_codes
+
+  - title: Browse
+    contents:
+      - ons_browse
+      - ons_browse_qmi
 
 navbar:
   type: default

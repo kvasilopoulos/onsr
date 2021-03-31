@@ -3,20 +3,11 @@
 \name{ons_codelists}
 \alias{ons_codelists}
 \alias{ons_codelist}
-\alias{ons_codelist2}
-\alias{ons_codelist3}
-\alias{ons_codelist4}
 \title{Explore codes and lists}
 \usage{
 ons_codelists()
 
-ons_codelist(id = NULL, edition = NULL, code = NULL)
-
-ons_codelist2(id = NULL, edition = NULL, code = NULL)
-
-ons_codelist3(id = NULL, edition = NULL, code = NULL)
-
-ons_codelist4(id = NULL, edition = NULL, code = NULL)
+ons_codelist(id = NULL)
 }
 \description{
 Used to get details about codes and code lists stored by ONS. Codes are used
@@ -31,13 +22,13 @@ ons_codelists()
 ons_codelist(id = "quarter")
 
 #editions
-ons_codelist2(id = "quarter", edition = EMPTY)
-ons_codelist2(id = "quarter", edition = "one-off")
+ons_codelist_editions(id = "quarter")
+ons_codelist_edition(id = "quarter", edition = )
 
 #codes
-ons_codelist3(id = "quarter", edition = "one-off", code = EMPTY)
-ons_codelist3(id = "quarter", edition = "one-off", code = "q2")
+ons_codes(id = "quarter", edition = "one-off")
+ons_code(id = "quarter", edition = "one-off", code = "q2")
 
-ons_codelist4(id = "quarter", edition = "one-off", code = "q2")
+ons_code_dataset(id = "quarter", edition = "one-off", code = "q2")
 
 }

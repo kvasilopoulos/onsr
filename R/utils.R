@@ -5,26 +5,21 @@
   else x
 }
 
-read_csv_silent <- function(..., type = getOption("onsr.read")) {
+read_csv_silent <- function(x, type = getOption("onsr.read"), ...) {
 
-  type <- match.arg(type, c("vroom", "data.table", "readr"))
+  type <- match.arg(type, c("readr", "vroom", "data.table"))
   suppressMessages({
     if(type == "vroom") {
-      out <- vroom::vroom(...)
+      out <- vroom::vroom(x, ...)
     } else if (type == "data.table"){
       need_pkg("data.table")
-      out <- data.table::fread(...)
+      out <- data.table::fread(x, ...)
     } else if (type == "readr"){
       need_pkg("readr")
-      out <- readr::read_csv(...)
+      out <- readr::read_csv(x, ...)
     }
   })
   out
-}
-
-set_read_engine <- function(ons_read = NULL) {
-  ons_read <- match.arg(ons_read, c("vroom", "data.table", "readr"))
-  options(onsr.read = ons_read)
 }
 
 has_pkg <- function(pkg) {

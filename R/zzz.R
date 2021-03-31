@@ -2,7 +2,7 @@
   op <- options()
 
   op.onsr <- list(
-    onsr.read = "vroom"
+    onsr.read = "readr"
   )
   toset <- !(names(op.onsr) %in% names(op))
   if (any(toset)) options(op.onsr[toset])
