@@ -21,6 +21,7 @@ reference:
       - ons_search
 
  - title: Dimensions and metadata
+    contents:
       - ons_extra
 
   - title: Datasets & Ids
