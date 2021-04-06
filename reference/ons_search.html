@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Quickly browse to ONS's developer webpage — ons_browse • onsr</title>
+<title>Search for a dataset — ons_search • onsr</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Quickly browse to ONS's developer webpage — ons_browse" />
-<meta property="og:description" content="This function take you to the ONS's developer webpage and
-return the URL invisibly." />
+<meta property="og:title" content="Search for a dataset — ons_search" />
+<meta property="og:description" content="Search for a dataset" />
 
 
 
@@ -112,23 +111,57 @@ return the URL invisibly." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Quickly browse to ONS's developer webpage</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/06-browse.R'><code>R/06-browse.R</code></a></small>
-    <div class="hidden name"><code>ons_browse.Rd</code></div>
+    <h1>Search for a dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/05-search.R'><code>R/05-search.R</code></a></small>
+    <div class="hidden name"><code>ons_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function take you to the ONS's developer webpage and
-return the URL invisibly.</p>
+    <p>Search for a dataset</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_browse</span><span class='op'>(</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ons_search</span><span class='op'>(</span><span class='va'>id</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span>, name <span class='op'>=</span> <span class='cn'>NULL</span>, query <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p><code>[character]</code>     Id that represents a dataset.</p></td>
+    </tr>
+    <tr>
+      <th>edition</th>
+      <td><p><code>[character]</code>     A subset of the dataset representing a specific time period.
+For some datasets this edition can contain all time periods (all historical data).
+The latest version of this is displayed by default.</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p><code>[character]</code>     A specific instance of the edition at a point in time. New
+versions can be published as a result of corrections, revisions or new data
+becoming available.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p><code>[character]</code>. The name of dimension to perform the query. Available dimensions for
+a specific id at <code><a href='ons_extra.html'>ons_dim()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>query</th>
+      <td><p><code>[character]</code>. The query.</p></td>
+    </tr>
+    </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ons_browse</span><span class='op'>(</span><span class='op'>)</span>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='ons_extra.html'>ons_dim</a></span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "aggregate" "geography" "time"     </div><div class='input'><span class='fu'>ons_search</span><span class='op'>(</span><span class='st'>"cpih01"</span>, name <span class='op'>=</span> <span class='st'>"aggregate"</span>, query <span class='op'>=</span> <span class='st'>"cpih1dim1A0"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;          code
+#&gt; 1 cpih1dim1A0
+#&gt;                                                   dimension_option_url has_data
+#&gt; 1 http://10.30.44.23:10500/code-lists/cpih1dim1aggid/codes/cpih1dim1A0     TRUE
+#&gt;           label  code number_of_children
+#&gt; 1 Overall Index 10, 0                 12</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

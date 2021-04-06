@@ -7,6 +7,9 @@
     <loc>https://kvasilopoulos.github.io/onsr/reference/ons_browse.html</loc>
   </url>
   <url>
+    <loc>https://kvasilopoulos.github.io/onsr/reference/ons_browse_qmi.html</loc>
+  </url>
+  <url>
     <loc>https://kvasilopoulos.github.io/onsr/reference/ons_codelists.html</loc>
   </url>
   <url>
@@ -26,5 +29,8 @@
   </url>
   <url>
     <loc>https://kvasilopoulos.github.io/onsr/reference/ons_latest.html</loc>
+  </url>
+  <url>
+    <loc>https://kvasilopoulos.github.io/onsr/reference/ons_search.html</loc>
   </url>
 </urlset>

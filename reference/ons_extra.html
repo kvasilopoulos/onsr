@@ -124,53 +124,197 @@ combination of dimension <code>options</code> in a version can be used to retrie
 <code>observation</code> level data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_get_dim</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span>, limit <span class='op'>=</span> <span class='fl'>20</span>, offset <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>ons_dim</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>ons_get_dim_opts</span><span class='op'>(</span>
+<span class='fu'>ons_dim_opts</span><span class='op'>(</span>
   id <span class='op'>=</span> <span class='cn'>NULL</span>,
   edition <span class='op'>=</span> <span class='cn'>NULL</span>,
   version <span class='op'>=</span> <span class='cn'>NULL</span>,
   dimension <span class='op'>=</span> <span class='cn'>NULL</span>,
-  limit <span class='op'>=</span> <span class='fl'>20</span>,
-  offset <span class='op'>=</span> <span class='fl'>0</span>
+  limit <span class='op'>=</span> <span class='cn'>NULL</span>,
+  offset <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span>
 
-<span class='fu'>ons_get_meta</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+<span class='fu'>ons_meta</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
-<span class='fu'>ons_get_obs</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
-
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p><code>[character]</code>     Id that represents a dataset.</p></td>
+    </tr>
+    <tr>
+      <th>edition</th>
+      <td><p><code>[character]</code>     A subset of the dataset representing a specific time period.
+For some datasets this edition can contain all time periods (all historical data).
+The latest version of this is displayed by default.</p></td>
+    </tr>
+    <tr>
+      <th>version</th>
+      <td><p><code>[character]</code>     A specific instance of the edition at a point in time. New
+versions can be published as a result of corrections, revisions or new data
+becoming available.</p></td>
+    </tr>
+    <tr>
+      <th>dimension</th>
+      <td><p><code>[character]</code></p></td>
+    </tr>
+    <tr>
+      <th>limit</th>
+      <td><p><code>[numeric(1): NULL]</code> Number of records to return. By default is <code>NULL</code>, which
+means that the defaults of the ONS API are used. You can set it to a number
+to rquest more (or less) records, and also to <code>Inf</code> to request all records.</p></td>
+    </tr>
+    <tr>
+      <th>offset</th>
+      <td><p><code>[numeric(1): NULL]</code> The position in the dataset of a particular record.
+By specifying <code>offset</code> , you retrieve a subset of records starting with
+the <code>offset</code> value. Offset normally works with length , which determines
+how many records to retrieve starting from the <code>offset</code>.</p></td>
+    </tr>
+    </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ons_get_dim</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_dim(id = "cpih01"): could not find function "ons_get_dim"</span></div><div class='input'>
-<span class='fu'>ons_get_dim_opts</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, dimension <span class='op'>=</span> <span class='st'>"time"</span>, limit <span class='op'>=</span> <span class='fl'>400</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_dim_opts(id = "cpih01", dimension = "time", limit = 400): could not find function "ons_get_dim_opts"</span></div><div class='input'>
-<span class='fu'>ons_get_meta</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_meta(id = "cpih01"): could not find function "ons_get_meta"</span></div><div class='input'>
-<span class='fu'><a href='ons_get.html'>ons_get</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55,695 x 7</span><span>
-#&gt;     V4_0 `mmm-yy` time   `uk-only` geography  cpih1dim1aggid aggregate          
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>  93.1 May-11   May-11 K02000001 United Ki… cpih1dim1S905… 09.5.3/4 Misc. pri…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>  70.2 Sep-03   Sep-03 K02000001 United Ki… cpih1dim1T100… 01 Food and non-al…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>  99.7 Aug-16   Aug-16 K02000001 United Ki… cpih1dim1G506… 05.6 Goods and ser…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>  83.2 Feb-01   Feb-01 K02000001 United Ki… cpih1dim1S701… 07.1.2/3 Motorcycl…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>  68.2 Oct-00   Oct-00 K02000001 United Ki… cpih1dim1S101… 01.1.2 Meat        
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>  36.7 Jan-93   Jan-93 K02000001 United Ki… cpih1dim1S405… 04.5.4 Solid fuels 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>  81.2 Sep-98   Sep-98 K02000001 United Ki… cpih1dim1G201… 02.1 Alcoholic bev…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>  47   Sep-03   Sep-03 K02000001 United Ki… cpih1dim1S405… 04.5.4 Solid fuels 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  98.3 Feb-12   Feb-12 K02000001 United Ki… cpih1dim1G505… 05.5 Tools and equ…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> 101.  Jan-16   Jan-16 K02000001 United Ki… cpih1dim1S802… 08.2.0 Telephone a…
-#&gt; </span><span style='color: #949494;'># … with 55,685 more rows</span><span></div><div class='input'><span class='fu'><a href='ons_get.html'>ons_get</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>3</span>, dimension <span class='op'>=</span> <span class='st'>"geography"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in readr::read_csv(x, ...): unused argument (dimension = "geography")</span></div><div class='input'>
-
-<span class='co'># Take only specific observations</span>
-<span class='fu'>ons_get_obs</span><span class='op'>(</span><span class='st'>"cpih01"</span>, geography <span class='op'>=</span> <span class='st'>"K02000001"</span>, aggregate <span class='op'>=</span> <span class='st'>"cpih1dim1A0"</span>, time <span class='op'>=</span> <span class='st'>"Oct-11"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0",     time = "Oct-11"): could not find function "ons_get_obs"</span></div><div class='input'>
-<span class='co'># Or can use a wildcard for the time</span>
-<span class='fu'>ons_get_obs</span><span class='op'>(</span><span class='st'>"cpih01"</span>, geography <span class='op'>=</span> <span class='st'>"K02000001"</span>, aggregate <span class='op'>=</span> <span class='st'>"cpih1dim1A0"</span>, time <span class='op'>=</span> <span class='st'>"*"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0",     time = "*"): could not find function "ons_get_obs"</span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>ons_dim</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "aggregate" "geography" "time"     </div><div class='input'>
+<span class='fu'>ons_dim_opts</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, dimension <span class='op'>=</span> <span class='st'>"time"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Fetched 20/398 (limit = 20, offset = 0) </div><div class='output co'>#&gt;  [1] "Apr-00" "Apr-01" "Apr-02" "Apr-03" "Apr-04" "Apr-05" "Apr-06" "Apr-07"
+#&gt;  [9] "Apr-08" "Apr-09" "Apr-10" "Apr-11" "Apr-12" "Apr-13" "Apr-14" "Apr-15"
+#&gt; [17] "Apr-16" "Apr-17" "Apr-18" "Apr-19"</div><div class='input'>
+<span class='fu'>ons_meta</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $`@context`
+#&gt; [1] "https://cdn.ons.gov.uk/assets/json-ld/context.json"
+#&gt; 
+#&gt; $alerts
+#&gt; list()
+#&gt; 
+#&gt; $contacts
+#&gt;            email                         name          telephone
+#&gt; 1 cpi@ons.gov.uk Andy King and Philip Gooding +44 (0)1633 456900
+#&gt; 
+#&gt; $description
+#&gt; [1] "CPIH is the most comprehensive measure of inflation. It extends CPI to include a measure of the costs associated with owning, maintaining and living in one's own home, known as owner occupiers' housing costs (OOH), along with council tax. This dataset provides CPIH time series (2005 to latest published month), allowing users to customise their own selection, view or download."
+#&gt; 
+#&gt; $dimensions
+#&gt;                                                       href             id
+#&gt; 1         https://api.beta.ons.gov.uk/v1/code-lists/mmm-yy         mmm-yy
+#&gt; 2        https://api.beta.ons.gov.uk/v1/code-lists/uk-only        uk-only
+#&gt; 3 https://api.beta.ons.gov.uk/v1/code-lists/cpih1dim1aggid cpih1dim1aggid
+#&gt;       label      name
+#&gt; 1      Time      time
+#&gt; 2 Geography geography
+#&gt; 3 Aggregate aggregate
+#&gt; 
+#&gt; $distribution
+#&gt; [1] "json" "csv"  "csvw" "xls" 
+#&gt; 
+#&gt; $downloads
+#&gt; $downloads$csv
+#&gt; $downloads$csv$href
+#&gt; [1] "https://download.beta.ons.gov.uk/downloads/datasets/cpih01/editions/time-series/versions/6.csv"
+#&gt; 
+#&gt; $downloads$csv$size
+#&gt; [1] "5148315"
+#&gt; 
+#&gt; 
+#&gt; $downloads$csvw
+#&gt; $downloads$csvw$href
+#&gt; [1] "https://download.beta.ons.gov.uk/downloads/datasets/cpih01/editions/time-series/versions/6.csv-metadata.json"
+#&gt; 
+#&gt; $downloads$csvw$size
+#&gt; [1] "1606"
+#&gt; 
+#&gt; 
+#&gt; $downloads$xls
+#&gt; $downloads$xls$href
+#&gt; [1] "https://download.beta.ons.gov.uk/downloads/datasets/cpih01/editions/time-series/versions/6.xlsx"
+#&gt; 
+#&gt; $downloads$xls$size
+#&gt; [1] "258354"
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $keywords
+#&gt; [1] "Inflation"
+#&gt; 
+#&gt; $license
+#&gt; [1] "Open Government Licence v3.0"
+#&gt; 
+#&gt; $links
+#&gt; $links$self
+#&gt; $links$self$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/datasets/cpih01/editions/time-series/versions/6/metadata"
+#&gt; 
+#&gt; 
+#&gt; $links$version
+#&gt; $links$version$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/datasets/cpih01/editions/time-series/versions/6"
+#&gt; 
+#&gt; $links$version$id
+#&gt; [1] "6"
+#&gt; 
+#&gt; 
+#&gt; $links$website_version
+#&gt; $links$website_version$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/datasets/cpih01/editions/time-series/versions/6"
+#&gt; 
+#&gt; 
+#&gt; 
+#&gt; $methodologies
+#&gt;                                                                                                                                                                                                      href
+#&gt; 1 http://webarchive.nationalarchives.gov.uk/20160105160709/http://www.ons.gov.uk/ons/guide-method/user-guidance/prices/cpi-and-rpi/cpi-technical-manual/consumer-price-indices-technical-manual--2014.pdf
+#&gt; 2                                                     https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/consumerpriceinflation/current/cpirereferenceddata2015100tcm77432809.xls
+#&gt; 3                                                                                    https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/usersandusesofconsumerpriceinflationstatistics
+#&gt;                                                    title
+#&gt; 1   Consumer Price Indices Technical Manual 2014 Edition
+#&gt; 2 Re-referencing of the CPI and CPIH indices to 2015=100
+#&gt; 3  Users and uses of consumer price inflation statistics
+#&gt;                                                                                                                                              description
+#&gt; 1                                                                                                                                                   &lt;NA&gt;
+#&gt; 2 From the release of January consumer price inflation data on 16 February 2016, CPI and CPIH indices will be re-referenced and published with 2015=100.
+#&gt; 3                        Provides information on the characteristics of the different measures of consumer price inflation in relation to potential use.
+#&gt; 
+#&gt; $national_statistic
+#&gt; [1] TRUE
+#&gt; 
+#&gt; $next_release
+#&gt; [1] "21 April 2021"
+#&gt; 
+#&gt; $publications
+#&gt;                                                                                              href
+#&gt; 1 https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/latest
+#&gt;                         title
+#&gt; 1 UK consumer price inflation
+#&gt; 
+#&gt; $qmi
+#&gt; $qmi$href
+#&gt; [1] "https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/consumerpriceinflationincludesall3indicescpihcpiandrpiqmi"
+#&gt; 
+#&gt; 
+#&gt; $related_datasets
+#&gt;                                                                                      href
+#&gt; 1 https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation
+#&gt;                      title
+#&gt; 1 Consumer price inflation
+#&gt; 
+#&gt; $release_date
+#&gt; [1] "2021-03-24T00:00:00.000Z"
+#&gt; 
+#&gt; $release_frequency
+#&gt; [1] "Monthly"
+#&gt; 
+#&gt; $title
+#&gt; [1] "Consumer Prices Index including owner occupiers' housing costs (CPIH)"
+#&gt; 
+#&gt; $unit_of_measure
+#&gt; [1] "Index: 2015=100"
+#&gt; 
+#&gt; $usage_notes
+#&gt; list()
+#&gt; </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

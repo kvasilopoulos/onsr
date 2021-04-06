@@ -128,7 +128,11 @@ different codes. The meaning of a code should not change over time, but new code
 may be created where new meaning is required.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+
+<span class='fu'>ons_code</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, code <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+
+<span class='fu'>ons_code_dataset</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, code <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,50 +156,7 @@ The latest version of this is displayed by default.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='ons_codelists.html'>ons_codelists</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "administrative-geography"        "adzuna-jobs-category"           
-#&gt;  [3] "age-groups"                      "averages-and-percentiles"       
-#&gt;  [5] "build-status"                    "calendar-month"                 
-#&gt;  [7] "calendar-years"                  "cause-of-death"                 
-#&gt;  [9] "city-regions"                    "construction-classifications"   
-#&gt; [11] "construction-series-type"        "countries"                      
-#&gt; [13] "countries-and-territories"       "cpih1dim1aggid"                 
-#&gt; [15] "dd-mm"                           "decade"                         
-#&gt; [17] "economic-activity"               "england-regions"                
-#&gt; [19] "enterprise-regions"              "financial-and-calendar-years"   
-#&gt; [21] "healthcare-financing-scheme"     "healthcare-function"            
-#&gt; [23] "healthcare-provider"             "hours-and-earnings"             
-#&gt; [25] "house-sales-and-prices"          "household-reference-person"     
-#&gt; [27] "income-type"                     "index-and-year-change"          
-#&gt; [29] "life-expectancy-cohort"          "life-expectancy-type"           
-#&gt; [31] "local-enterprise-partnership"    "local-health-board"             
-#&gt; [33] "measure-of-wellbeing"            "middle-layer-super-output-area" 
-#&gt; [35] "mmm"                             "mmm-mmm-yyyy"                   
-#&gt; [37] "mmm-yy"                          "nuts"                           
-#&gt; [39] "parliamentary-constituencies"    "pedestrians-and-vehicles"       
-#&gt; [41] "place-of-death"                  "property-type"                  
-#&gt; [43] "quarter"                         "quarterly-index-and-growth-rate"
-#&gt; [45] "quintile"                        "recorded-deaths"                
-#&gt; [47] "registration-or-occurrence"      "seasonal-adjustment"            
-#&gt; [49] "sector"                          "sex"                            
-#&gt; [51] "ship-and-visit-type"             "shipping-port"                  
-#&gt; [53] "sic"                             "sic-unofficial"                 
-#&gt; [55] "single-year-of-age"              "sitc"                           
-#&gt; [57] "soc"                             "speak-welsh"                    
-#&gt; [59] "tax-benefit-type"                "trade-direction"                
-#&gt; [61] "traffic-camera-area"             "travel-to-work-area"            
-#&gt; [63] "two-year-intervals"              "type-of-prices"                 
-#&gt; [65] "uk-business-unit"                "uk-only"                        
-#&gt; [67] "unit-of-measure"                 "value-deflation"                
-#&gt; [69] "week-number"                     "wellbeing-estimate"             
-#&gt; [71] "welsh-household-composition"     "working-pattern"                
-#&gt; [73] "workplace-or-residence"          "yyyy"                           
-#&gt; [75] "yyyy-qq"                         "yyyy-yy"                        </div><div class='input'><span class='fu'><a href='ons_codelists.html'>ons_codelist</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist(id = "quarter"): could not find function "ons_codelist"</span></div><div class='input'>
-<span class='co'>#editions</span>
-<span class='fu'><a href='ons_codelists.html'>ons_codelist_editions</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_editions(id = "quarter"): could not find function "ons_codelist_editions"</span></div><div class='input'><span class='fu'><a href='ons_codelists.html'>ons_codelist_edition</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_edition(id = "quarter", edition = "one-off"): could not find function "ons_codelist_edition"</span></div><div class='input'>
+
 <span class='co'>#codes</span>
 <span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $count

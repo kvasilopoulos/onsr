@@ -193,37 +193,37 @@ The latest version of this is displayed by default.</p></td>
 #&gt; [71] "welsh-household-composition"     "working-pattern"                
 #&gt; [73] "workplace-or-residence"          "yyyy"                           
 #&gt; [75] "yyyy-qq"                         "yyyy-yy"                        </div><div class='input'><span class='fu'>ons_codelist</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist(id = "quarter"): could not find function "ons_codelist"</span></div><div class='input'>
+</div><div class='output co'>#&gt; $links
+#&gt; $links$editions
+#&gt; $links$editions$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions"
+#&gt; 
+#&gt; 
+#&gt; $links$self
+#&gt; $links$self$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter"
+#&gt; 
+#&gt; $links$self$id
+#&gt; [1] "quarter"
+#&gt; 
+#&gt; 
+#&gt; </div><div class='input'>
 <span class='co'>#editions</span>
 <span class='fu'>ons_codelist_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_editions(id = "quarter"): could not find function "ons_codelist_editions"</span></div><div class='input'><span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_edition(id = "quarter", edition = "one-off"): could not find function "ons_codelist_edition"</span></div><div class='input'>
-<span class='co'>#codes</span>
-<span class='fu'><a href='ons_codes.html'>ons_codes</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $count
-#&gt; [1] 4
+#&gt; [1] 1
 #&gt; 
 #&gt; $items
-#&gt;   code label                                        links.href
-#&gt; 1   q1    Q1 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 2   q2    Q2 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 3   q3    Q3 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 4   q4    Q4 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt;                                                                             links.href
-#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q1/datasets
-#&gt; 2 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2/datasets
-#&gt; 3 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q3/datasets
-#&gt; 4 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q4/datasets
-#&gt;                                                               links.self.href
-#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q1
-#&gt; 2 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2
-#&gt; 3 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q3
-#&gt; 4 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q4
+#&gt;   edition label
+#&gt; 1 one-off      
+#&gt;                                                                 links.href
+#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes
+#&gt;                                                   links.href
+#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions
+#&gt;                                                      links.self.href
+#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off
 #&gt;   links.self.id
-#&gt; 1            q1
-#&gt; 2            q2
-#&gt; 3            q3
-#&gt; 4            q4
+#&gt; 1       one-off
 #&gt; 
 #&gt; $limit
 #&gt; [1] 20
@@ -232,50 +232,35 @@ The latest version of this is displayed by default.</p></td>
 #&gt; [1] 0
 #&gt; 
 #&gt; $total_count
-#&gt; [1] 4
-#&gt; </div><div class='input'><span class='fu'>ons_code</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span>, code <span class='op'>=</span> <span class='st'>"q2"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $code
-#&gt; [1] "q2"
+#&gt; [1] 1
+#&gt; </div><div class='input'><span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; $edition
+#&gt; [1] "one-off"
 #&gt; 
 #&gt; $label
 #&gt; [1] ""
 #&gt; 
 #&gt; $links
-#&gt; $links$code_list
-#&gt; $links$code_list$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter"
+#&gt; $links$codes
+#&gt; $links$codes$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes"
 #&gt; 
 #&gt; 
-#&gt; $links$datasets
-#&gt; $links$datasets$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2/datasets"
+#&gt; $links$editions
+#&gt; $links$editions$href
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions"
 #&gt; 
 #&gt; 
 #&gt; $links$self
 #&gt; $links$self$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2"
+#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off"
 #&gt; 
 #&gt; $links$self$id
-#&gt; [1] "q2"
+#&gt; [1] "one-off"
 #&gt; 
 #&gt; 
 #&gt; </div><div class='input'>
-<span class='fu'>ons_code_dataset</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span>, code <span class='op'>=</span> <span class='st'>"q2"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $count
-#&gt; [1] 0
-#&gt; 
-#&gt; $items
-#&gt; list()
-#&gt; 
-#&gt; $limit
-#&gt; [1] 20
-#&gt; 
-#&gt; $offset
-#&gt; [1] 0
-#&gt; 
-#&gt; $total_count
-#&gt; [1] 0
-#&gt; </div><div class='input'>
+
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
