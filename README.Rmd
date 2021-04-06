@@ -21,13 +21,12 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/onsr)](https://CRAN.R-project.org/package=onsr)
 <!-- badges: end -->
 
-This API is currently in Beta and still being developed. Please be aware that as a result of this there may occasionally be breaking changes.
+> **_NOTE:_** This API is currently in Beta and still being developed. Please be aware that as a result of this there may occasionally be breaking changes.
 
 
-The goal of onsr is to ...
+The goal of onsr is to to provide a client for the 'Office of National Statistics' ('ONS') API <https://api.beta.ons.gov.uk/v1>.  
 
 ## Installation
-
 
 And the development version from [GitHub](https://github.com/) with:
 
@@ -37,15 +36,16 @@ devtools::install_github("kvasilopoulos/onsr")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to download data with `onsr`.
 
 ```{r example}
 library(onsr)
-## basic example code
+
 ons_get(id = "ageing-population-estimates")
 ```
 
 ## Rate limiting
+
 The ONS API applies rate limiting to ensure a high quality service is delivered to all users and to protect client applications from unexpected loops.
 
 The following rate limits have been implemented:

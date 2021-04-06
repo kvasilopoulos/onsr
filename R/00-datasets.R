@@ -10,7 +10,7 @@
 #' @importFrom tibble tibble as_tibble
 #' @export
 #'
-#' @return A tibble with the requested dataset.
+#' @return A tibble with the datasets.
 #'
 #' @examples
 #' \donttest{
@@ -37,13 +37,14 @@ ons_ids <- function() {
   x$id
 }
 
-#' Description of the dataset
+#' Description of the Dataset
 #'
 #' This function provides a description of the important information about a
 #' dataset.
 #'
 #' @inheritParams ons_get
 #'
+#' @return A description of the requested dataset.
 #' @export
 #' @examples
 #' \donttest{
@@ -82,6 +83,7 @@ ons_editions <- function(id = NULL) {
 #'
 #' @inheritParams ons_get
 #'
+#' @return An atomic character vector with the latest info.
 #' @export
 #' @name ons_latest
 #' @examples

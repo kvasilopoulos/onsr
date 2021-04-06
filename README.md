@@ -12,10 +12,12 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/onsr)](https://CRAN.R-project.org/package=onsr)
 <!-- badges: end -->
 
-This API is currently in Beta and still being developed. Please be aware
-that as a result of this there may occasionally be breaking changes.
+> ***NOTE:*** This API is currently in Beta and still being developed.
+> Please be aware that as a result of this there may occasionally be
+> breaking changes.
 
-The goal of onsr is to …
+The goal of onsr is to to provide a client for the ‘Office of National
+Statistics’ (‘ONS’) API <https://api.beta.ons.gov.uk/v1>.
 
 ## Installation
 
@@ -28,11 +30,12 @@ devtools::install_github("kvasilopoulos/onsr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to download data with
+`onsr`.
 
 ``` r
 library(onsr)
-## basic example code
+
 ons_get(id = "ageing-population-estimates")
 #> # A tibble: 18,960 x 12
 #>     V4_1 `Data Marking` `calendar-years`  Time `administrative-g~ Geography  sex   Sex  

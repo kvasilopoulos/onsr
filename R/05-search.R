@@ -1,6 +1,6 @@
 # /dimension-search/datasets/{id}/editions/{edition}/versions/{version}/dimensions/{name}
 
-#' Search for a dataset
+#' Search for a Dataset
 #'
 #' @inheritParams ons_get
 #'
@@ -12,6 +12,8 @@
 #' @param query
 #'
 #'`[character]`. The query.
+#'
+#' @return A data.frame.
 #'
 #' @export
 #' @examples

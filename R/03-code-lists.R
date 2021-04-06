@@ -8,6 +8,9 @@
 #' may be created where new meaning is required.
 #'
 #' @inheritParams ons_get
+#'
+#' @return A list or character vector.
+#'
 #' @export
 #' @examples
 #' \donttest{
@@ -41,7 +44,7 @@ ons_codelist_editions <- function(id = NULL) {
   req <- build_base_request(`code-lists` = id, editions = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)
-  raw
+  raw$items
 }
 
 #' @rdname ons_codelists
@@ -62,11 +65,14 @@ ons_codelist_edition <- function(id = NULL, edition = NULL) {
 #' different codes. The meaning of a code should not change over time, but new codes
 #' may be created where new meaning is required.
 #'
+#' @inheritParams ons_get
+#'
 #' @param code
 #'
 #' `[character]` The ID of the code within a code list.
 #'
-#' @inheritParams ons_get
+#' @return A list or character vector.
+#'
 #' @export
 #' @examples
 #'
@@ -81,7 +87,7 @@ ons_codes <- function(id = NULL, edition = NULL) {
   req <- build_base_request(`code-lists` = id,  editions = edition, codes = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)
-  raw
+  raw$items
 }
 
 #' @rdname ons_codes
@@ -99,7 +105,7 @@ ons_code_dataset <- function(id = NULL, edition = NULL, code = NULL) {
   req <- build_base_request(`code-lists` = id, editions = edition, codes = code, datasets = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)
-  raw
+  raw$items
 }
 
 

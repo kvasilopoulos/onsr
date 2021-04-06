@@ -86,7 +86,7 @@ build_request_obs <- function(id, ...) {
 
 
 
-#' Access dataset's addtiional information.
+#' Access dataset's additional information
 #'
 #' Data in each version is broken down by `dimensions`, and a unique
 #' combination of dimension `options` in a version can be used to retrieve
@@ -102,7 +102,7 @@ build_request_obs <- function(id, ...) {
 #'
 #' `[numeric(1): NULL]` Number of records to return. By default is `NULL`, which
 #' means that the defaults of the ONS API are used. You can set it to a number
-#' to rquest more (or less) records, and also to `Inf` to request all records.
+#' to request more (or less) records, and also to `Inf` to request all records.
 #'
 #' @param offset
 #'
@@ -111,6 +111,7 @@ build_request_obs <- function(id, ...) {
 #' the `offset` value. Offset normally works with length , which determines
 #' how many records to retrieve starting from the `offset`.
 #'
+#' @return A character vector.
 #' @name ons_extra
 #' @export
 #' @examples

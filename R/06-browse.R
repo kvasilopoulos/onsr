@@ -1,6 +1,6 @@
-#' Quickly browse to ONS's developer webpage
+#' Quickly browse to ONS' developer webpage
 #'
-#' This function take you to the ONS's developer webpage and
+#' This function take you to the ONS' developer webpage and
 #' return the URL invisibly.
 #'
 #' @export
@@ -12,9 +12,9 @@ ons_browse <- function() {
   view_url("https://developer.ons.gov.uk/")
 }
 
-#' Quickly browse to dataset's QMI
+#' Quickly browse to dataset's Quality and Methodology Information (QMI)
 #'
-#' This function take you to the QMI
+#' This function take you to the QMI and return the URL invisibly.
 #'
 #' @inheritParams ons_get
 #' @export
