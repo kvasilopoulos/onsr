@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ONS Latest — ons_latest • onsr</title>
+<title>Latest info on ONS Datasets — ons_latest • onsr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="ONS Latest — ons_latest" />
-<meta property="og:description" content="ONS Latest" />
+<meta property="og:title" content="Latest info on ONS Datasets — ons_latest" />
+<meta property="og:description" content="This functions are used to access the latest href, version and edition
+of a dataset." />
 
 
 
@@ -111,23 +112,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ONS Latest</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/01-datasets.R'><code>R/01-datasets.R</code></a></small>
+    <h1>Latest info on ONS Datasets</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/00-datasets.R'><code>R/00-datasets.R</code></a></small>
     <div class="hidden name"><code>ons_latest.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>ONS Latest</p>
+    <p>This functions are used to access the latest <code>href</code>, <code>version</code> and <code>edition</code>
+of a dataset.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_latest_version</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>ons_latest_href</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>ons_latest_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+<span class='fu'>ons_latest_version</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>ons_latest_href</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+<span class='fu'>ons_latest_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p><code>[character]</code>     Id that represents a dataset.</p></td>
+    </tr>
+    </table>
 
 
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>ons_latest_href</span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "https://api.beta.ons.gov.uk/v1/datasets/cpih01/editions/time-series/versions/6"</div><div class='input'><span class='fu'>ons_latest_version</span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "6"</div><div class='input'><span class='fu'>ons_latest_edition</span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "time-series"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

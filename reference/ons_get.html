@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get data from — ons_get • onsr</title>
+<title>Download data from ONS — ons_get • onsr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,10 @@
 
 
 
-<meta property="og:title" content="Get data from — ons_get" />
-<meta property="og:description" content="Get data from" />
+<meta property="og:title" content="Download data from ONS — ons_get" />
+<meta property="og:description" content="This functions is used to find information about data published by the ONS.
+Datasets are published in unique versions, which are categorized by edition.
+Available datasets are given  an id. All available id can be viewed with ons_ids()." />
 
 
 
@@ -111,13 +113,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get data from</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/02-get.R'><code>R/02-get.R</code></a></small>
+    <h1>Download data from ONS</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/01-get.R'><code>R/01-get.R</code></a></small>
     <div class="hidden name"><code>ons_get.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get data from</p>
+    <p>This functions is used to find information about data published by the ONS.
+<code>Datasets</code> are published in unique <code>versions</code>, which are categorized by <code>edition</code>.
+Available datasets are given  an <code>id</code>. All available <code>id</code> can be viewed with <code><a href='ons_datasets.html'>ons_ids()</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ons_get</span><span class='op'>(</span>
@@ -126,32 +130,30 @@
   version <span class='op'>=</span> <span class='cn'>NULL</span>,
   ons_read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"onsr.read"</span><span class='op'>)</span>,
   <span class='va'>...</span>
-<span class='op'>)</span>
-
-<span class='fu'>ons_get_dim_opts</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span>, dimension <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>ons_get_meta</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>ons_get_obs</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span>, version <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>id</th>
-      <td><p>`[character]`</p></td>
+      <td><p><code>[character]</code>     Id that represents a dataset.</p></td>
     </tr>
     <tr>
       <th>edition</th>
-      <td><p>`[character]`</p></td>
+      <td><p><code>[character]</code>     A subset of the dataset representing a specific time period.
+For some datasets this edition can contain all time periods (all historical data).
+The latest version of this is displayed by default.</p></td>
     </tr>
     <tr>
       <th>version</th>
-      <td><p>`[version]`</p></td>
+      <td><p><code>[character]</code>     A specific instance of the edition at a point in time. New
+versions can be published as a result of corrections, revisions or new data
+becoming available.</p></td>
     </tr>
     <tr>
       <th>ons_read</th>
-      <td><p>`[ons_read]`</p></td>
+      <td><p><code>[character]</code>. Reading backend, one of <code>readr</code>, <code>data.table</code> or <code>vroom</code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -159,9 +161,20 @@
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with the dataset in tidy format.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, limit <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in readr::read_csv(x, ...): unused argument (limit = 500)</span></div><div class='input'>
+<span class='co'># Same dataset but older version</span>
+<span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, version <span class='op'>=</span> <span class='st'>"5"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55,977 x 7</span><span>
 #&gt;     v4_0 `mmm-yy` Time   `uk-only` Geography  cpih1dim1aggid Aggregate          
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
@@ -176,60 +189,6 @@
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  30.8 May-96   May-96 K02000001 United Ki… cpih1dim1G202… 02.2 Tobacco       
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>  85.3 Jun-99   Jun-99 K02000001 United Ki… cpih1dim1G505… 05.5 Tools and equ…
 #&gt; </span><span style='color: #949494;'># … with 55,967 more rows</span><span></div><div class='input'>
-<span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 55,305 x 7</span><span>
-#&gt;     v4_0 `mmm-yy` Time   `uk-only` Geography  cpih1dim1aggid Aggregate          
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>  83.9 May-03   May-03 K02000001 United Ki… cpih1dim1G402… 04.2.0 Owner Occup…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>  54.7 May-96   May-96 K02000001 United Ki… cpih1dim1G110… 11.1 Catering serv…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>  68.5 Aug-99   Aug-99 K02000001 United Ki… cpih1dim1S101… 01.1.2 Meat        
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>  60.5 Feb-00   Feb-00 K02000001 United Ki… cpih1dim1S702… 07.2.4 Other servi…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>  81.4 Oct-89   Oct-89 K02000001 United Ki… cpih1dim1S903… 09.3.3 Gardens, pl…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> 100.  Sep-15   Sep-15 K02000001 United Ki… cpih1dim1S120… 12.6.2 Other finan…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> 116.  May-00   May-00 K02000001 United Ki… cpih1dim1G903… 09.3 Other recreat…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>  99.5 Aug-17   Aug-17 K02000001 United Ki… cpih1dim1S302… 03.2.0 Footwear in…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  38   Mar-04   Mar-04 K02000001 United Ki… cpih1dim1G100… 10.0 Education     
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  87.3 Mar-95   Mar-95 K02000001 United Ki… cpih1dim1S120… 12.1.2/3 Appliance…
-#&gt; </span><span style='color: #949494;'># … with 55,295 more rows</span><span></div><div class='input'>
-<span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"ageing-population-estimates"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,960 x 12</span><span>
-#&gt;     V4_1 `Data Marking` `calendar-years`  Time `administrative-… Geography sex  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E08000008         Tameside  fema…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E12000009         South We… fema…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='text-decoration: underline;'>83</span><span>288 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E08000006         Salford   fema…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 W92000004         Wales     male 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000166         Richmond… all  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='text-decoration: underline;'>55</span><span>635 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E06000034         Thurrock  fema…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='text-decoration: underline;'>14</span><span>437 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000108         Dover     fema…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='text-decoration: underline;'>10</span><span>736 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000131         Harborou… fema…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='text-decoration: underline;'>12</span><span>646 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000106         Canterbu… fema…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  </span><span style='text-decoration: underline;'>9</span><span>450 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000237         Worcester fema…
-#&gt; </span><span style='color: #949494;'># … with 18,950 more rows, and 5 more variables: Sex &lt;chr&gt;, age-groups &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   AgeGroups &lt;chr&gt;, unit-of-measure &lt;chr&gt;, UnitOfMeasure &lt;chr&gt;</span><span></div><div class='input'><span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"ageing-population-estimates"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,960 x 12</span><span>
-#&gt;     V4_1 `Data Marking` `calendar-years`  Time `administrative-… Geography sex  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E08000008         Tameside  fema…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E12000009         South We… fema…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='text-decoration: underline;'>83</span><span>288 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E08000006         Salford   fema…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 W92000004         Wales     male 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> .                          </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000166         Richmond… all  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='text-decoration: underline;'>55</span><span>635 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E06000034         Thurrock  fema…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='text-decoration: underline;'>14</span><span>437 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000108         Dover     fema…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='text-decoration: underline;'>10</span><span>736 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000131         Harborou… fema…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='text-decoration: underline;'>12</span><span>646 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000106         Canterbu… fema…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>  </span><span style='text-decoration: underline;'>9</span><span>450 </span><span style='color: #BB0000;'>NA</span><span>                         </span><span style='text-decoration: underline;'>2</span><span>019  </span><span style='text-decoration: underline;'>2</span><span>019 E07000237         Worcester fema…
-#&gt; </span><span style='color: #949494;'># … with 18,950 more rows, and 5 more variables: Sex &lt;chr&gt;, age-groups &lt;chr&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   AgeGroups &lt;chr&gt;, unit-of-measure &lt;chr&gt;, UnitOfMeasure &lt;chr&gt;</span><span></div><div class='input'>
-<span class='fu'><a href='ons_extra.html'>ons_get_dims</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_get_dims(id = "cpih01", edition = "time-series", version = 3): could not find function "ons_get_dims"</span></div><div class='input'>
-
-<span class='fu'>ons_dataset_dims</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_dataset_dims(id = "cpih01", edition = "time-series", version = 3): could not find function "ons_dataset_dims"</span></div><div class='input'><span class='fu'>ons_dataset_dim_opts</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span>, edition <span class='op'>=</span> <span class='st'>"time-series"</span>, version <span class='op'>=</span> <span class='fl'>3</span>, dimension <span class='op'>=</span> <span class='st'>"geography"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_dataset_dim_opts(id = "cpih01", edition = "time-series",     version = 3, dimension = "geography"): could not find function "ons_dataset_dim_opts"</span></div><div class='input'>
-
-
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

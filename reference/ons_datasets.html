@@ -40,7 +40,11 @@
 
 
 <meta property="og:title" content="ONS Datasets — ons_datasets" />
-<meta property="og:description" content="Used to find information about data published by the ONS." />
+<meta property="og:description" content="A grouping of data (editions) with shared dimensions, for example Sex,
+Age and Geography, and all published history of this group of data.
+The options in these dimensions can change over time leading to
+separate editions. For example: Population Estimates for UK, England
+and Wales, Scotland and Northern Ireland." />
 
 
 
@@ -112,31 +116,92 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>ONS Datasets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/01-datasets.R'><code>R/01-datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/00-datasets.R'><code>R/00-datasets.R</code></a></small>
     <div class="hidden name"><code>ons_datasets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Used to find information about data published by the ONS.</p>
+    <p>A grouping of data (editions) with shared dimensions, for example Sex,
+Age and Geography, and all published history of this group of data.
+The options in these dimensions can change over time leading to
+separate editions. For example: Population Estimates for UK, England
+and Wales, Scotland and Northern Ireland.</p>
     </div>
 
     <pre class="usage"><span class='fu'>ons_datasets</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='fu'>ons_ids</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>ons_lookout</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, desc <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-
-<span class='fu'>ons_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+<span class='fu'>ons_ids</span><span class='op'>(</span><span class='op'>)</span></pre>
 
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with the requested dataset.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-
-<span class='fu'>ons_lookout</span><span class='op'>(</span><span class='st'>"cpih01"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_lookout("cpih01"): could not find function "ons_lookout"</span></div><div class='input'><span class='fu'>ons_lookout</span><span class='op'>(</span><span class='st'>"ageing-population-estimates"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_lookout("ageing-population-estimates"): could not find function "ons_lookout"</span></div><div class='input'>
-</div></pre>
+<span class='co'># Find all the information about the data</span>
+<span class='fu'>ons_datasets</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 41 x 17</span><span>
+#&gt;    contacts  description  id    keywords links$editions$… $latest_version… $$id 
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Indicators… agei… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Projected … agei… </span><span style='color: #949494;'>&lt;chr [3</span><span>… https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Indicators… olde… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Figures pr… olde… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Both indic… olde… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Projected … proj… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   https://api.bet… https://api.bet… 2    
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Projected … proj… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   https://api.bet… https://api.bet… 1    
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Provisiona… week… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 24   
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Provisiona… week… </span><span style='color: #949494;'>&lt;chr [2</span><span>… https://api.bet… https://api.bet… 24   
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #949494;'>&lt;df[,3] </span><span>… </span><span style='color: #949494;'>"</span><span>Experiment… onli… </span><span style='color: #949494;'>&lt;NULL&gt;</span><span>   https://api.bet… https://api.bet… 3    
+#&gt; </span><span style='color: #949494;'># … with 31 more rows, and 12 more variables: next_release &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   qmi &lt;tibble[,1]&gt;, related_datasets &lt;list&gt;, release_frequency &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   state &lt;chr&gt;, title &lt;chr&gt;, methodologies &lt;list&gt;, national_statistic &lt;lgl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   publications &lt;list&gt;, license &lt;chr&gt;, unit_of_measure &lt;chr&gt;, type &lt;chr&gt;</span><span></div><div class='input'>
+<span class='co'># Just the ids</span>
+<span class='fu'>ons_ids</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "ageing-population-estimates"                  
+#&gt;  [2] "ageing-population-projections"                
+#&gt;  [3] "older-people-economic-activity"               
+#&gt;  [4] "older-people-net-internal-migration"          
+#&gt;  [5] "older-people-sex-ratios"                      
+#&gt;  [6] "projections-older-people-in-single-households"
+#&gt;  [7] "projections-older-people-sex-ratios"          
+#&gt;  [8] "weekly-deaths-age-sex"                        
+#&gt;  [9] "weekly-deaths-region"                         
+#&gt; [10] "online-job-advert-estimates"                  
+#&gt; [11] "faster-indicators-shipping-data"              
+#&gt; [12] "cpih01"                                       
+#&gt; [13] "mid-year-pop-est"                             
+#&gt; [14] "weekly-deaths-health-board"                   
+#&gt; [15] "weekly-deaths-local-authority"                
+#&gt; [16] "regional-gdp-by-year"                         
+#&gt; [17] "wellbeing-local-authority"                    
+#&gt; [18] "index-private-housing-rental-prices"          
+#&gt; [19] "suicides-in-the-uk"                           
+#&gt; [20] "childrens-wellbeing"                          
+#&gt; [21] "gdp-to-four-decimal-places"                   
+#&gt; [22] "generational-income"                          
+#&gt; [23] "health-accounts"                              
+#&gt; [24] "wellbeing-quarterly"                          
+#&gt; [25] "house-prices-local-authority"                 
+#&gt; [26] "regional-gdp-by-quarter"                      
+#&gt; [27] "labour-market"                                
+#&gt; [28] "tax-benefits-statistics"                      
+#&gt; [29] "ashe-tables-26"                               
+#&gt; [30] "ashe-tables-25"                               
+#&gt; [31] "ashe-tables-27-and-28"                        
+#&gt; [32] "trade"                                        
+#&gt; [33] "ashe-tables-7-and-8"                          
+#&gt; [34] "ashe-tables-3"                                
+#&gt; [35] "ashe-tables-11-and-12"                        
+#&gt; [36] "ashe-tables-20"                               
+#&gt; [37] "ashe-tables-9-and-10"                         
+#&gt; [38] "ashe-table-5"                                 
+#&gt; [39] "life-expectancy-by-local-authority"           
+#&gt; [40] "gdp-by-local-authority"                       
+#&gt; [41] "gva-by-industry-by-local-authority"           </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

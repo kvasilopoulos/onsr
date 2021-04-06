@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Explore codes and lists — ons_codelists • onsr</title>
+<title>Explore codes and lists — ons_codes • onsr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Explore codes and lists — ons_codelists" />
+<meta property="og:title" content="Explore codes and lists — ons_codes" />
 <meta property="og:description" content="Used to get details about codes and code lists stored by ONS. Codes are used
 to provide a common definition when presenting statistics with related categories.
 Codes are gathered in code lists, which may change over time to include new or
@@ -117,7 +117,7 @@ may be created where new meaning is required." />
     <div class="page-header">
     <h1>Explore codes and lists</h1>
     <small class="dont-index">Source: <a href='https://github.com/kvasilopoulos/onsr/blob/master/R/03-code-lists.R'><code>R/03-code-lists.R</code></a></small>
-    <div class="hidden name"><code>ons_codelists.Rd</code></div>
+    <div class="hidden name"><code>ons_codes.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -128,13 +128,7 @@ different codes. The meaning of a code should not change over time, but new code
 may be created where new meaning is required.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ons_codelists</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'>ons_codelist</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>ons_codelist_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
-
-<span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='cn'>NULL</span>, edition <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,12 +143,16 @@ may be created where new meaning is required.</p>
 For some datasets this edition can contain all time periods (all historical data).
 The latest version of this is displayed by default.</p></td>
     </tr>
+    <tr>
+      <th>code</th>
+      <td><p><code>[character]</code> The ID of the code within a code list.</p></td>
+    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>ons_codelists</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='ons_codelists.html'>ons_codelists</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "administrative-geography"        "adzuna-jobs-category"           
 #&gt;  [3] "age-groups"                      "averages-and-percentiles"       
 #&gt;  [5] "build-status"                    "calendar-month"                 
@@ -192,14 +190,14 @@ The latest version of this is displayed by default.</p></td>
 #&gt; [69] "week-number"                     "wellbeing-estimate"             
 #&gt; [71] "welsh-household-composition"     "working-pattern"                
 #&gt; [73] "workplace-or-residence"          "yyyy"                           
-#&gt; [75] "yyyy-qq"                         "yyyy-yy"                        </div><div class='input'><span class='fu'>ons_codelist</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
+#&gt; [75] "yyyy-qq"                         "yyyy-yy"                        </div><div class='input'><span class='fu'><a href='ons_codelists.html'>ons_codelist</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist(id = "quarter"): could not find function "ons_codelist"</span></div><div class='input'>
 <span class='co'>#editions</span>
-<span class='fu'>ons_codelist_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_editions(id = "quarter"): could not find function "ons_codelist_editions"</span></div><div class='input'><span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
+<span class='fu'><a href='ons_codelists.html'>ons_codelist_editions</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_editions(id = "quarter"): could not find function "ons_codelist_editions"</span></div><div class='input'><span class='fu'><a href='ons_codelists.html'>ons_codelist_edition</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='error'>Error in ons_codelist_edition(id = "quarter", edition = "one-off"): could not find function "ons_codelist_edition"</span></div><div class='input'>
 <span class='co'>#codes</span>
-<span class='fu'><a href='ons_codes.html'>ons_codes</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
+<span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $count
 #&gt; [1] 4
 #&gt; 

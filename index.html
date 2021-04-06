@@ -75,6 +75,7 @@
 <a href="#onsr" class="anchor"></a>onsr</h1></div>
 <!-- badges: start -->
 
+<p>This API is currently in Beta and still being developed. Please be aware that as a result of this there may occasionally be breaking changes.</p>
 <p>The goal of onsr is to …</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -107,6 +108,17 @@
 <span class="co">#&gt; 10  9450 &lt;NA&gt;                       2019  2019 E07000237          Worcester  fema~ Fema~</span>
 <span class="co">#&gt; # ... with 18,950 more rows, and 4 more variables: age-groups &lt;chr&gt;, AgeGroups &lt;chr&gt;,</span>
 <span class="co">#&gt; #   unit-of-measure &lt;chr&gt;, UnitOfMeasure &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="rate-limiting" class="section level2">
+<h2 class="hasAnchor">
+<a href="#rate-limiting" class="anchor"></a>Rate limiting</h2>
+<p>The ONS API applies rate limiting to ensure a high quality service is delivered to all users and to protect client applications from unexpected loops.</p>
+<p>The following rate limits have been implemented:</p>
+<ul>
+<li><p>120 requests per 10 seconds</p></li>
+<li><p>200 requests per 1 minute</p></li>
+</ul>
+<p>If you exceed these limits the API will return a 429 Too Many Requests HTTP status code and a Retry-After header containing the number of seconds until you may try your request again.</p>
 </div>
 </div>
   </div>
