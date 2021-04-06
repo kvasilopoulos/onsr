@@ -22,6 +22,9 @@ read_csv_silent <- function(x, type = getOption("onsr.read"), ...) {
   out
 }
 
+
+# conditional pkgs --------------------------------------------------------
+
 has_pkg <- function(pkg) {
   pkg %in% loadedNamespaces()
 }
@@ -35,5 +38,32 @@ need_pkg <- function(pkg) {
   if (!is_installed(pkg)) {
     stop("Please install ", pkg, " package", call. = FALSE)
   }
+}
+
+# cat  --------------------------------------------------------------------
+
+
+cat_ratio <- function(x) {
+  cat(
+    paste0(
+      "Fetched ", x$count, "/", x$total_count,
+      " (limit = ", x$limit, ", offset = ", x$offset, ")"),
+    "\n")
+}
+
+
+cat_ratio_obs <- function(x) {
+  cat(
+    paste0(
+      "Fetched ", NROW(x$observations), "/", x$total_observations,
+      " (limit = ", x$limit, ", offset = ", x$offset, ")"),
+    "\n")
+}
+
+# cleaning ----------------------------------------------------------------
+
+clean_date <- function(x, idx = "Time") {
+  x[["Time"]] <- as.Date(paste("01-", x[["Time"]], sep = ""), format = "%d-%b-%y")
+  x
 }
 

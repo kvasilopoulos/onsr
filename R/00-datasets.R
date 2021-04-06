@@ -1,10 +1,17 @@
 #' ONS Datasets
 #'
-#' Used to find information about data published by the ONS.
+#' A grouping of data (editions) with shared dimensions, for example Sex,
+#' Age and Geography, and all published history of this group of data.
+#' The options in these dimensions can change over time leading to
+#' separate editions. For example: Population Estimates for UK, England
+#' and Wales, Scotland and Northern Ireland.
 #'
 #' @importFrom httr GET stop_for_status
 #' @importFrom tibble tibble as_tibble
 #' @export
+#'
+#' @return A tibble with the requested dataset.
+#'
 #' @examples
 #'
 #' # Find all the information about the data
@@ -13,36 +20,15 @@
 #' # Just the ids
 #' ons_ids()
 #'
-#' # Look more about a specific id
-#' ons_lookout("cpih01")
 ons_datasets <- function() {
   req <- build_base_request(datasets = EMPTY)
   res <- make_request(req, limit = 50)
   raw <- process_response(res)
-  # cat_ratio(raw)
   tbl <- as_tibble(raw$items)
   tbl$links <- as_tibble(tbl$links)
   tbl$qmi <- as_tibble(tbl$qmi)
   tbl
 }
-
-cat_ratio <- function(x) {
-  cat(
-    paste0(
-      "Fetched ", x$count, "/", x$total_count,
-      " (limit = ", x$limit, ", offset = ", x$offset, ")"),
-    "\n")
-}
-
-
-cat_ratio_obs <- function(x) {
-  cat(
-    paste0(
-      "Fetched ", NROW(x$observations), "/", x$total_observations,
-      " (limit = ", x$limit, ", offset = ", x$offset, ")"),
-    "\n")
-}
-
 
 #' @export
 #' @rdname ons_datasets
@@ -51,19 +37,27 @@ ons_ids <- function() {
   x$id
 }
 
+#' Description of the dataset
+#'
+#' This function provides a description of the important information about a
+#' dataset.
+#'
+#' @inheritParams ons_get
+#'
 #' @export
-#' @rdname ons_datasets
-ons_lookout <- function(id = NULL, desc = FALSE) {
+#' @examples
+#' ons_desc("cpih01")
+ons_desc <- function(id = NULL) {
   x <- ons_datasets()
+  assert_valid_id(id, x)
+
   line <- x[which(x$id == id),]
   cat("Title:", line$title, "\n")
   cat("ID:", id, "\n")
   cat("Keywords:", line$keywords[[1]], "\n")
   cat("-----------\n")
-  if(isTRUE(desc)) {
-    cat("Description:", line$description,"\n")
-    cat("-----------\n")
-  }
+  cat("Description:", line$description,"\n")
+  cat("-----------\n")
   cat("Release Frequency:", line$release_frequency , "\n")
   cat("State:", line$state, "\n")
   cat("Next Release:", line$next_release, "\n")
@@ -79,9 +73,12 @@ ons_editions <- function(id = NULL) {
   raw$items$edition
 }
 
-#' ONS latest info on Datasets
+#' Latest info on ONS Datasets
 #'
-#' Used to find information about data published by the ONS.
+#' This functions are used to access the latest `href`, `version` and `edition`
+#' of a dataset.
+#'
+#' @inheritParams ons_get
 #'
 #' @export
 #' @name ons_latest
@@ -115,7 +112,6 @@ ons_latest_edition <- function(id = NULL) {
 }
 
 # helpers -----------------------------------------------------------------
-
 
 
 id_number <- function(id = NULL, ons_ds = ons_datasets()) {

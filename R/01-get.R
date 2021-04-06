@@ -1,29 +1,38 @@
+#' Download data from ONS
 #'
-#' Get data from
-#'
-#' @importFrom readr read_csv
+#' This functions is used to find information about data published by the ONS.
+#' `Datasets` are published in unique `versions`, which are categorized by `edition`.
+#' Available datasets are given  an `id`. All available `id` can be viewed with `ons_ids()`.
 #'
 #' @param id
 #'
-#' `[character]`
+#' `[character]` 	Id that represents a dataset.
 #'
 #' @param edition
 #'
-#' `[character]`
+#' `[character]` 	A subset of the dataset representing a specific time period.
+#' For some datasets this edition can contain all time periods (all historical data).
+#' The latest version of this is displayed by default.
 #'
 #' @param version
 #'
-#' `[version]`
+#' `[character]` 	A specific instance of the edition at a point in time. New
+#' versions can be published as a result of corrections, revisions or new data
+#' becoming available.
 #'
 #' @param ons_read
 #'
-#' `[ons_read]`
+#' `[character]`. Reading backend, one of `readr`, `data.table` or `vroom`.
 #'
 #' @param ...
 #'
 #' Further arguments passed on the reading functions.
 #'
 #'
+#' @details
+#'
+#' @importFrom readr read_csv
+#' @return A tibble with the dataset in tidy format.
 #' @export
 #' @examples
 #' ons_get(id = "cpih01", limit = 500)
@@ -40,7 +49,11 @@ ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOpt
 
 
 
-#' Extra functionality
+#' Access dataset's addtiional information.
+#'
+#' Data in each version is broken down by `dimensions`, and a unique
+#' combination of dimension `options` in a version can be used to retrieve
+#' `observation` level data.
 #'
 #' @name ons_extra
 #' @examples
@@ -80,9 +93,7 @@ ons_get_meta <- function(id = NULL, edition = NULL, version = NULL) {
   raw
 }
 
-
-
-#' @rdname ons_get
+#' @rdname ons_extra
 #' @examples
 #'
 #' # Take only specific observations

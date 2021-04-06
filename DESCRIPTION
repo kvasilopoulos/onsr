@@ -20,6 +20,8 @@ URL: https://kvasilopoulos.github.io/onsr, https://github.com/kvasilopoulos/onsr
 BugReports: https://github.com/kvasilopoulos/onsr/issues
 RoxygenNote: 7.1.1
 Suggests: 
+    testthat (>= 3.0.0),
     data.table,
     vroom
 Roxygen: list(markdown = TRUE)
+Config/testthat/edition: 3

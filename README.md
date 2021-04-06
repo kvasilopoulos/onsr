@@ -12,6 +12,9 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/onsr)](https://CRAN.R-project.org/package=onsr)
 <!-- badges: end -->
 
+This API is currently in Beta and still being developed. Please be aware
+that as a result of this there may occasionally be breaking changes.
+
 The goal of onsr is to …
 
 ## Installation
@@ -47,3 +50,19 @@ ons_get(id = "ageing-population-estimates")
 #> # ... with 18,950 more rows, and 4 more variables: age-groups <chr>, AgeGroups <chr>,
 #> #   unit-of-measure <chr>, UnitOfMeasure <chr>
 ```
+
+## Rate limiting
+
+The ONS API applies rate limiting to ensure a high quality service is
+delivered to all users and to protect client applications from
+unexpected loops.
+
+The following rate limits have been implemented:
+
+-   120 requests per 10 seconds
+
+-   200 requests per 1 minute
+
+If you exceed these limits the API will return a 429 Too Many Requests
+HTTP status code and a Retry-After header containing the number of
+seconds until you may try your request again.

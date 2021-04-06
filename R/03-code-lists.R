@@ -7,7 +7,8 @@
 #' different codes. The meaning of a code should not change over time, but new codes
 #' may be created where new meaning is required.
 #'
-#'
+#' @inheritParams ons_get
+#' @export
 #' @examples
 #'
 #' ons_codelists()
@@ -63,7 +64,12 @@ ons_codelist_edition <- function(id = NULL, edition = NULL) {
 #' different codes. The meaning of a code should not change over time, but new codes
 #' may be created where new meaning is required.
 #'
+#' @param code
 #'
+#' `[character]` The ID of the code within a code list.
+#'
+#' @inheritParams ons_get
+#' @export
 #' @examples
 #'
 #' ons_codelists()
