@@ -38,10 +38,5 @@ ons_codelist(id = "quarter")
 ons_codelist_editions(id = "quarter")
 ons_codelist_edition(id = "quarter", edition = "one-off")
 
-#codes
-ons_codes(id = "quarter", edition = "one-off")
-ons_code(id = "quarter", edition = "one-off", code = "q2")
-
-ons_code_dataset(id = "quarter", edition = "one-off", code = "q2")
 
 }

@@ -2,12 +2,9 @@
 % Please edit documentation in R/06-browse.R
 \name{ons_browse}
 \alias{ons_browse}
-\alias{ons_browse_qmi}
 \title{Quickly browse to ONS's developer webpage}
 \usage{
 ons_browse()
-
-ons_browse_qmi(id = NULL)
 }
 \description{
 This function take you to the ONS's developer webpage and

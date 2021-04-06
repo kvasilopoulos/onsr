@@ -2,6 +2,7 @@
 % Please edit documentation in R/01-get.R
 \name{ons_get}
 \alias{ons_get}
+\alias{ons_get_obs}
 \title{Download data from ONS}
 \usage{
 ons_get(
@@ -11,6 +12,8 @@ ons_get(
   ons_read = getOption("onsr.read"),
   ...
 )
+
+ons_get_obs(id = NULL, edition = NULL, version = NULL, ...)
 }
 \arguments{
 \item{id}{\verb{[character]}     Id that represents a dataset.}
@@ -35,13 +38,16 @@ This functions is used to find information about data published by the ONS.
 \code{Datasets} are published in unique \code{versions}, which are categorized by \code{edition}.
 Available datasets are given  an \code{id}. All available \code{id} can be viewed with \code{ons_ids()}.
 }
-\details{
-
-}
 \examples{
-ons_get(id = "cpih01", limit = 500)
+ons_get(id = "cpih01")
 
 # Same dataset but older version
 ons_get(id = "cpih01", version = "5")
 
+
+# Take only specific observations
+ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "Oct-11")
+
+# Or can use a wildcard for the time
+ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
 }

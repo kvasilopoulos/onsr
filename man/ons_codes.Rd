@@ -2,9 +2,15 @@
 % Please edit documentation in R/03-code-lists.R
 \name{ons_codes}
 \alias{ons_codes}
+\alias{ons_code}
+\alias{ons_code_dataset}
 \title{Explore codes and lists}
 \usage{
 ons_codes(id = NULL, edition = NULL)
+
+ons_code(id = NULL, edition = NULL, code = NULL)
+
+ons_code_dataset(id = NULL, edition = NULL, code = NULL)
 }
 \arguments{
 \item{id}{\verb{[character]}     Id that represents a dataset.}
@@ -24,12 +30,6 @@ may be created where new meaning is required.
 }
 \examples{
 
-ons_codelists()
-ons_codelist(id = "quarter")
-
-#editions
-ons_codelist_editions(id = "quarter")
-ons_codelist_edition(id = "quarter", edition = "one-off")
 
 #codes
 ons_codes(id = "quarter", edition = "one-off")

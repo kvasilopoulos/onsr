@@ -11,21 +11,23 @@ authors:
 
 reference:
 
-  - title: Get
+  - title: Download
     contents:
       - ons_get
+      - ons_get_obs
+
+  - title: Search
+    contents:
+      - ons_search
+
+ - title: Dimensions and metadata
       - ons_extra
 
-  - title: Package
-    desc: >
-      Estimation & Critical Values
+  - title: Datasets & Ids
     contents:
       - ons_datasets
       - ons_latest
-
-  - title: Hierarchies
-    contents:
-    - ons_hierarchies
+      - ons_desc
 
   - title: Codelists & Codes
     contents:

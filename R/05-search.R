@@ -1,10 +1,29 @@
 # /dimension-search/datasets/{id}/editions/{edition}/versions/{version}/dimensions/{name}
 
+#' Search for a dataset
+#'
+#' @inheritParams ons_get
+#'
+#' @param name
+#'
+#'`[character]`. The name of dimension to perform the query. Available dimensions for
+#'a specific id at `ons_dim()`.
+#'
+#' @param query
+#'
+#'`[character]`. The query.
+#'
+#' @export
 #' @examples
+#' \donttest{
+#' ons_dim("cpih01")
 #' ons_search("cpih01", name = "aggregate", query = "cpih1dim1A0")
+#' }
 ons_search <- function(id, edition = NULL, version = NULL, name = NULL, query = NULL) {
   edition <- edition %||% ons_latest_edition(id)
   version <- version %||% ons_latest_version(id)
+
+  stopifnot(any(name %in% ons_dim(id, edition, version)))
 
   base <- build_base_request(
     `dimension-search` = EMPTY, datasets = id, editions = edition,

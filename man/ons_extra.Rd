@@ -2,26 +2,45 @@
 % Please edit documentation in R/01-get.R
 \name{ons_extra}
 \alias{ons_extra}
-\alias{ons_get_dim}
-\alias{ons_get_dim_opts}
-\alias{ons_get_meta}
-\alias{ons_get_obs}
+\alias{ons_dim}
+\alias{ons_dim_opts}
+\alias{ons_meta}
 \title{Access dataset's addtiional information.}
 \usage{
-ons_get_dim(id = NULL, edition = NULL, version = NULL, limit = 20, offset = 0)
+ons_dim(id = NULL, edition = NULL, version = NULL)
 
-ons_get_dim_opts(
+ons_dim_opts(
   id = NULL,
   edition = NULL,
   version = NULL,
   dimension = NULL,
-  limit = 20,
-  offset = 0
+  limit = NULL,
+  offset = NULL
 )
 
-ons_get_meta(id = NULL, edition = NULL, version = NULL)
+ons_meta(id = NULL, edition = NULL, version = NULL)
+}
+\arguments{
+\item{id}{\verb{[character]}     Id that represents a dataset.}
 
-ons_get_obs(id = NULL, edition = NULL, version = NULL, ...)
+\item{edition}{\verb{[character]}     A subset of the dataset representing a specific time period.
+For some datasets this edition can contain all time periods (all historical data).
+The latest version of this is displayed by default.}
+
+\item{version}{\verb{[character]}     A specific instance of the edition at a point in time. New
+versions can be published as a result of corrections, revisions or new data
+becoming available.}
+
+\item{dimension}{\verb{[character]}}
+
+\item{limit}{\verb{[numeric(1): NULL]} Number of records to return. By default is \code{NULL}, which
+means that the defaults of the ONS API are used. You can set it to a number
+to rquest more (or less) records, and also to \code{Inf} to request all records.}
+
+\item{offset}{\verb{[numeric(1): NULL]} The position in the dataset of a particular record.
+By specifying \code{offset} , you retrieve a subset of records starting with
+the \code{offset} value. Offset normally works with length , which determines
+how many records to retrieve starting from the \code{offset}.}
 }
 \description{
 Data in each version is broken down by \code{dimensions}, and a unique
@@ -29,19 +48,10 @@ combination of dimension \code{options} in a version can be used to retrieve
 \code{observation} level data.
 }
 \examples{
-ons_get_dim(id = "cpih01")
+ons_dim(id = "cpih01")
 
-ons_get_dim_opts(id = "cpih01", dimension = "time", limit = 400)
+ons_dim_opts(id = "cpih01", dimension = "time")
 
-ons_get_meta(id = "cpih01")
+ons_meta(id = "cpih01")
 
-ons_get(id = "cpih01", edition = "time-series", version = 3)
-ons_get(id = "cpih01", edition = "time-series", version = 3, dimension = "geography")
-
-
-# Take only specific observations
-ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "Oct-11")
-
-# Or can use a wildcard for the time
-ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
 }

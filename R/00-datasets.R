@@ -13,13 +13,13 @@
 #' @return A tibble with the requested dataset.
 #'
 #' @examples
-#'
+#' \donttest{
 #' # Find all the information about the data
 #' ons_datasets()
 #'
 #' # Just the ids
 #' ons_ids()
-#'
+#' }
 ons_datasets <- function() {
   req <- build_base_request(datasets = EMPTY)
   res <- make_request(req, limit = 50)
@@ -46,7 +46,9 @@ ons_ids <- function() {
 #'
 #' @export
 #' @examples
+#' \donttest{
 #' ons_desc("cpih01")
+#' }
 ons_desc <- function(id = NULL) {
   x <- ons_datasets()
   assert_valid_id(id, x)
@@ -83,10 +85,11 @@ ons_editions <- function(id = NULL) {
 #' @export
 #' @name ons_latest
 #' @examples
-#'
+#' \donttest{
 #' ons_latest_href("cpih01")
 #' ons_latest_version("cpih01")
 #' ons_latest_edition("cpih01")
+#' }
 
 #' @rdname ons_latest
 #' @export
