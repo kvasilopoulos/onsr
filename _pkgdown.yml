@@ -20,7 +20,7 @@ reference:
     contents:
       - ons_search
 
- - title: Dimensions and metadata
+  - title: Dimensions and metadata
     contents:
       - ons_extra
 
