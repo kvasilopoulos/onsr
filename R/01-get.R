@@ -71,8 +71,10 @@ build_request_obs <- function(id, ...) {
   params <- list(...)
   nms <- names(params)
 
-  avail_dims <- ons_dim(id)
-  stopifnot(nms %in% avail_dims)
+  all_dims <- ons_dim(id)
+  if(!all(all_dims %in% nms)) {
+   stop(" The dimensions have been misspecified, see `ons_dim()`.", call. = FALSE)
+  }
 
   plen <- length(params)
   param_chunks <- vector("character", plen)
