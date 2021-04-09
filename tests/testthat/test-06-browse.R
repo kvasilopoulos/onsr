@@ -1,5 +1,12 @@
-skip_if_interactive()
+test_that("browse url", {
+  skip_if_interactive() # to avoid opening tabs
 
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+  expect_identical(
+    ons_browse(),
+    "https://developer.ons.gov.uk/"
+  )
+  expect_identical(
+    ons_browse_qmi("cpih01"),
+    "https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/consumerpriceinflationincludesall3indicescpihcpiandrpiqmi"
+  )
 })
