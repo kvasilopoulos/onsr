@@ -168,7 +168,8 @@ becoming available.</p></td>
     <p>A tibble with the dataset in tidy format.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>ons_get</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"cpih01"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 55,305 x 7</span><span>
 #&gt;     v4_0 `mmm-yy` Time   `uk-only` Geography  cpih1dim1aggid Aggregate          
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
@@ -198,8 +199,8 @@ becoming available.</p></td>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 108.  Mar-03   Mar-03 K02000001 United Ki… cpih1dim1S502… 05.2.0 Household T…
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span>  30.8 May-96   May-96 K02000001 United Ki… cpih1dim1G202… 02.2 Tobacco       
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>  85.3 Jun-99   Jun-99 K02000001 United Ki… cpih1dim1G505… 05.5 Tools and equ…
-#&gt; </span><span style='color: #949494;'># … with 55,967 more rows</span><span></div><div class='input'>
-
+#&gt; </span><span style='color: #949494;'># … with 55,967 more rows</span><span></div><div class='input'><span class='co'># }</span>
+<span class='co'># \donttest{</span>
 <span class='co'># Take only specific observations</span>
 <span class='fu'>ons_get_obs</span><span class='op'>(</span><span class='st'>"cpih01"</span>, geography <span class='op'>=</span> <span class='st'>"K02000001"</span>, aggregate <span class='op'>=</span> <span class='st'>"cpih1dim1A0"</span>, time <span class='op'>=</span> <span class='st'>"Oct-11"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; Fetched 1/1 (limit = 10000, offset = 0) </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 1</span><span>
@@ -221,7 +222,8 @@ becoming available.</p></td>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> https://api.beta.ons.gov.uk/v1/c… Feb-04         Feb-04           77.2       
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> https://api.beta.ons.gov.uk/v1/c… Aug-08         Aug-08           87.1       
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> https://api.beta.ons.gov.uk/v1/c… Nov-93         Nov-93           63.8       
-#&gt; </span><span style='color: #949494;'># … with 388 more rows</span><span></div></span></pre>
+#&gt; </span><span style='color: #949494;'># … with 388 more rows</span><span></div><div class='input'><span class='co'># }</span>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

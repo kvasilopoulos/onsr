@@ -151,9 +151,12 @@ The latest version of this is displayed by default.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list or character vector.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>ons_codelists</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "administrative-geography"        "adzuna-jobs-category"           
 #&gt;  [3] "age-groups"                      "averages-and-percentiles"       
@@ -210,11 +213,7 @@ The latest version of this is displayed by default.</p></td>
 #&gt; </div><div class='input'>
 <span class='co'>#editions</span>
 <span class='fu'>ons_codelist_editions</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $count
-#&gt; [1] 1
-#&gt; 
-#&gt; $items
-#&gt;   edition label
+</div><div class='output co'>#&gt;   edition label
 #&gt; 1 one-off      
 #&gt;                                                                 links.href
 #&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes
@@ -223,17 +222,7 @@ The latest version of this is displayed by default.</p></td>
 #&gt;                                                      links.self.href
 #&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off
 #&gt;   links.self.id
-#&gt; 1       one-off
-#&gt; 
-#&gt; $limit
-#&gt; [1] 20
-#&gt; 
-#&gt; $offset
-#&gt; [1] 0
-#&gt; 
-#&gt; $total_count
-#&gt; [1] 1
-#&gt; </div><div class='input'><span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
+#&gt; 1       one-off</div><div class='input'><span class='fu'>ons_codelist_edition</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; $edition
 #&gt; [1] "one-off"
 #&gt; 
@@ -259,7 +248,7 @@ The latest version of this is displayed by default.</p></td>
 #&gt; [1] "one-off"
 #&gt; 
 #&gt; 
-#&gt; </div><div class='input'>
+#&gt; </div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
