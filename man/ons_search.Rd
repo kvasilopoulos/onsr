@@ -2,7 +2,7 @@
 % Please edit documentation in R/05-search.R
 \name{ons_search}
 \alias{ons_search}
-\title{Search for a dataset}
+\title{Search for a Dataset}
 \usage{
 ons_search(id, edition = NULL, version = NULL, name = NULL, query = NULL)
 }
@@ -22,10 +22,15 @@ a specific id at \code{ons_dim()}.}
 
 \item{query}{\verb{[character]}. The query.}
 }
+\value{
+A data.frame.
+}
 \description{
-Search for a dataset
+Search for a Dataset
 }
 \examples{
+\donttest{
 ons_dim("cpih01")
 ons_search("cpih01", name = "aggregate", query = "cpih1dim1A0")
+}
 }

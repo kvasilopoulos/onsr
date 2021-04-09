@@ -5,7 +5,7 @@
 \alias{ons_dim}
 \alias{ons_dim_opts}
 \alias{ons_meta}
-\title{Access dataset's addtiional information.}
+\title{Access dataset's additional information}
 \usage{
 ons_dim(id = NULL, edition = NULL, version = NULL)
 
@@ -35,12 +35,15 @@ becoming available.}
 
 \item{limit}{\verb{[numeric(1): NULL]} Number of records to return. By default is \code{NULL}, which
 means that the defaults of the ONS API are used. You can set it to a number
-to rquest more (or less) records, and also to \code{Inf} to request all records.}
+to request more (or less) records, and also to \code{Inf} to request all records.}
 
 \item{offset}{\verb{[numeric(1): NULL]} The position in the dataset of a particular record.
 By specifying \code{offset} , you retrieve a subset of records starting with
 the \code{offset} value. Offset normally works with length , which determines
 how many records to retrieve starting from the \code{offset}.}
+}
+\value{
+A character vector.
 }
 \description{
 Data in each version is broken down by \code{dimensions}, and a unique

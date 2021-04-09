@@ -22,6 +22,9 @@ ons_codelist_edition(id = NULL, edition = NULL)
 For some datasets this edition can contain all time periods (all historical data).
 The latest version of this is displayed by default.}
 }
+\value{
+A list or character vector.
+}
 \description{
 Used to get details about codes and code lists stored by ONS. Codes are used
 to provide a common definition when presenting statistics with related categories.
@@ -30,13 +33,13 @@ different codes. The meaning of a code should not change over time, but new code
 may be created where new meaning is required.
 }
 \examples{
-
+\donttest{
 ons_codelists()
 ons_codelist(id = "quarter")
 
 #editions
 ons_codelist_editions(id = "quarter")
 ons_codelist_edition(id = "quarter", edition = "one-off")
-
+}
 
 }

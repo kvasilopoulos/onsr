@@ -39,15 +39,17 @@ This functions is used to find information about data published by the ONS.
 Available datasets are given  an \code{id}. All available \code{id} can be viewed with \code{ons_ids()}.
 }
 \examples{
+\donttest{
 ons_get(id = "cpih01")
 
 # Same dataset but older version
 ons_get(id = "cpih01", version = "5")
-
-
+}
+\donttest{
 # Take only specific observations
 ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "Oct-11")
 
 # Or can use a wildcard for the time
 ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
+}
 }

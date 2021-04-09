@@ -6,14 +6,61 @@ set_endpoint <- function(query) {
   paste(endpoint, query, sep = "/")
 }
 
-assert_valid_id <- function(id = NULL, ons_ds = ons_datasets()) {
+
+restrict_size <- function(gt, type = c("Gb$", "Mb$")) {
+  type <- match.arg(type)
+  size <- dataset_size$Size
+  idx <- grep(type, size)
+  num <- as.numeric(gsub("(?=[GMK]b).+", "\\1", size, perl = TRUE))
+  bool <- num[idx] > gt
+  idx[bool]
+}
+
+ask_yesno <- function(...) {
+  cat(paste0(..., collapse = ""))
+  ans <- utils::menu(c("Yes", "No"))
+  as.logical(ans)
+}
+
+assert_filesize_id <- function(id, ids) {
+  large_ids <- restrict_size(1, "Gb$")
+  id_size <- dataset_size$Size[which(id == ids)]
+  if(id %in% ids[large_ids]) {
+    if (interactive()) {
+      ans <- ask_yesno(
+        paste0( "File size is very large (", id_size, ") and may cause errors.",
+                " Do you want to proceed?"))
+    }
+    if(!ans) {
+      stop("user choose to exit", call. = TRUE)
+    }
+  }
+  medium_ids <- restrict_size(200, "Mb$")
+  if(id %in% ids[medium_ids]) {
+    message(paste0( "File size is large (", id_size, ")."))
+  }
+}
+
+assert_valid_id <- function(id = NULL, ons_ds = NULL) {
+
+  if(is.null(ons_ds)) {
+    ids <- ons_ids()
+  }else{
+    ids <- ons_ds$id
+  }
+  if(length(id) > 1L) {
+    stop("trying to access multiple files", call. = FALSE)
+  }
   if(is.null(id)){
     stop("You must specify a `id`, see `ons_ids()`", call. = FALSE)
   }
-  if(!id %in% ons_ds$id) {
+  if(!id %in% ids) {
     stop("Invalid `id` see `ons_ids()`.", call. = FALSE)
   }
+  assert_filesize_id(id, ids)
 }
+
+
 
 # Build Request -----------------------------------------------------------
 

@@ -21,6 +21,9 @@ The latest version of this is displayed by default.}
 
 \item{code}{\verb{[character]} The ID of the code within a code list.}
 }
+\value{
+A list or character vector.
+}
 \description{
 Used to get details about codes and code lists stored by ONS. Codes are used
 to provide a common definition when presenting statistics with related categories.
@@ -30,11 +33,11 @@ may be created where new meaning is required.
 }
 \examples{
 
-
+\donttest{
 #codes
 ons_codes(id = "quarter", edition = "one-off")
 ons_code(id = "quarter", edition = "one-off", code = "q2")
 
 ons_code_dataset(id = "quarter", edition = "one-off", code = "q2")
-
+}
 }

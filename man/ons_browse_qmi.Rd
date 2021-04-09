@@ -2,7 +2,7 @@
 % Please edit documentation in R/06-browse.R
 \name{ons_browse_qmi}
 \alias{ons_browse_qmi}
-\title{Quickly browse to dataset's QMI}
+\title{Quickly browse to dataset's Quality and Methodology Information (QMI)}
 \usage{
 ons_browse_qmi(id = NULL)
 }
@@ -10,8 +10,10 @@ ons_browse_qmi(id = NULL)
 \item{id}{\verb{[character]}     Id that represents a dataset.}
 }
 \description{
-This function take you to the QMI
+This function take you to the QMI and return the URL invisibly.
 }
 \examples{
+\donttest{
 ons_browse_qmi("cpih01")
+}
 }

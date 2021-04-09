@@ -16,13 +16,17 @@ ons_latest_edition(id = NULL)
 \arguments{
 \item{id}{\verb{[character]}     Id that represents a dataset.}
 }
+\value{
+An atomic character vector with the latest info.
+}
 \description{
 This functions are used to access the latest \code{href}, \code{version} and \code{edition}
 of a dataset.
 }
 \examples{
-
+\donttest{
 ons_latest_href("cpih01")
 ons_latest_version("cpih01")
 ons_latest_edition("cpih01")
+}
 }

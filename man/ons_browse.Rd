@@ -2,14 +2,16 @@
 % Please edit documentation in R/06-browse.R
 \name{ons_browse}
 \alias{ons_browse}
-\title{Quickly browse to ONS's developer webpage}
+\title{Quickly browse to ONS' developer webpage}
 \usage{
 ons_browse()
 }
 \description{
-This function take you to the ONS's developer webpage and
+This function take you to the ONS' developer webpage and
 return the URL invisibly.
 }
 \examples{
+\donttest{
 ons_browse()
+}
 }

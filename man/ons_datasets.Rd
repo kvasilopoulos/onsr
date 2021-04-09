@@ -10,7 +10,7 @@ ons_datasets()
 ons_ids()
 }
 \value{
-A tibble with the requested dataset.
+A tibble with the datasets.
 }
 \description{
 A grouping of data (editions) with shared dimensions, for example Sex,
@@ -20,11 +20,11 @@ separate editions. For example: Population Estimates for UK, England
 and Wales, Scotland and Northern Ireland.
 }
 \examples{
-
+\donttest{
 # Find all the information about the data
 ons_datasets()
 
 # Just the ids
 ons_ids()
-
+}
 }

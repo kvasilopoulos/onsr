@@ -22,7 +22,7 @@
 #' }
 ons_datasets <- function() {
   req <- build_base_request(datasets = EMPTY)
-  res <- make_request(req, limit = 50)
+  res <- make_request(req, limit = 60)
   raw <- process_response(res)
   tbl <- as_tibble(raw$items)
   tbl$links <- as_tibble(tbl$links)
@@ -46,6 +46,7 @@ ons_ids <- function() {
 #'
 #' @return A description of the requested dataset.
 #' @export
+#' @seealso `ons_meta()`
 #' @examples
 #' \donttest{
 #' ons_desc("cpih01")
