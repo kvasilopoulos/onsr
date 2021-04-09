@@ -1,6 +1,6 @@
 Package: onsr
 Title: Client for the 'ONS' API
-Version: 0.0.1
+Version: 1.0.0
 Authors@R: 
     person(given = "Kostas",
            family = "Vasilopoulos",
@@ -16,7 +16,7 @@ Imports:
     jsonlite,
     readr,
     tibble
-URL: https://kvasilopoulos.github.io/onsr, https://github.com/kvasilopoulos/onsr
+URL: https://kvasilopoulos.github.io/onsr/
 BugReports: https://github.com/kvasilopoulos/onsr/issues
 RoxygenNote: 7.1.1
 Suggests: 
