@@ -67,3 +67,7 @@ clean_date <- function(x, idx = "Time") {
   x
 }
 
+# pass check --------------------------------------------------------------
+
+globalVariables(c("dataset_size"))
+
