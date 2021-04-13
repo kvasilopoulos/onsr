@@ -14,4 +14,11 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+N  checking CRAN incoming feasibility
+   Maintainer: 'Kostas Vasilopoulos <k.vasilopoulo@gmail.com>'
+   
+   New submission
+
+## Comments
+
+* Added \value to all .Rd files.
