@@ -6,14 +6,14 @@
 \alias{ons_code_dataset}
 \title{Explore codes and lists}
 \usage{
-ons_codes(id = NULL, edition = NULL)
+ons_codes(code_id = NULL, edition = NULL)
 
-ons_code(id = NULL, edition = NULL, code = NULL)
+ons_code(code_id = NULL, edition = NULL, code = NULL)
 
-ons_code_dataset(id = NULL, edition = NULL, code = NULL)
+ons_code_dataset(code_id = NULL, edition = NULL, code = NULL)
 }
 \arguments{
-\item{id}{\verb{[character]}     Id that represents a dataset.}
+\item{code_id}{\verb{[character]}. The id of a codelist.}
 
 \item{edition}{\verb{[character]}     A subset of the dataset representing a specific time period.
 For some datasets this edition can contain all time periods (all historical data).
@@ -35,9 +35,9 @@ may be created where new meaning is required.
 
 \donttest{
 #codes
-ons_codes(id = "quarter", edition = "one-off")
-ons_code(id = "quarter", edition = "one-off", code = "q2")
+ons_codes(code_id = "quarter", edition = "one-off")
+ons_code(code_id = "quarter", edition = "one-off", code = "q2")
 
-ons_code_dataset(id = "quarter", edition = "one-off", code = "q2")
+ons_code_dataset(code_id = "quarter", edition = "one-off", code = "q2")
 }
 }

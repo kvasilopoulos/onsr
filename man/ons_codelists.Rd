@@ -9,14 +9,14 @@
 \usage{
 ons_codelists()
 
-ons_codelist(id = NULL)
+ons_codelist(code_id = NULL)
 
-ons_codelist_editions(id = NULL)
+ons_codelist_editions(code_id = NULL)
 
-ons_codelist_edition(id = NULL, edition = NULL)
+ons_codelist_edition(code_id = NULL, edition = NULL)
 }
 \arguments{
-\item{id}{\verb{[character]}     Id that represents a dataset.}
+\item{code_id}{\verb{[character]}. The id of a codelist.}
 
 \item{edition}{\verb{[character]}     A subset of the dataset representing a specific time period.
 For some datasets this edition can contain all time periods (all historical data).
@@ -35,11 +35,11 @@ may be created where new meaning is required.
 \examples{
 \donttest{
 ons_codelists()
-ons_codelist(id = "quarter")
+ons_codelist(code_id = "quarter")
 
 #editions
-ons_codelist_editions(id = "quarter")
-ons_codelist_edition(id = "quarter", edition = "one-off")
+ons_codelist_editions(code_id = "quarter")
+ons_codelist_edition(code_id = "quarter", edition = "one-off")
 }
 
 }
