@@ -162,54 +162,10 @@ The latest version of this is displayed by default.</p></td>
 <span class='co'># \donttest{</span>
 <span class='co'>#codes</span>
 <span class='fu'>ons_codes</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   code label                                        links.href
-#&gt; 1   q1    Q1 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 2   q2    Q2 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 3   q3    Q3 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt; 4   q4    Q4 https://api.beta.ons.gov.uk/v1/code-lists/quarter
-#&gt;                                                                             links.href
-#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q1/datasets
-#&gt; 2 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2/datasets
-#&gt; 3 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q3/datasets
-#&gt; 4 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q4/datasets
-#&gt;                                                               links.self.href
-#&gt; 1 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q1
-#&gt; 2 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2
-#&gt; 3 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q3
-#&gt; 4 https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q4
-#&gt;   links.self.id
-#&gt; 1            q1
-#&gt; 2            q2
-#&gt; 3            q3
-#&gt; 4            q4</div><div class='input'><span class='fu'>ons_code</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span>, code <span class='op'>=</span> <span class='st'>"q2"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $code
-#&gt; [1] "q2"
-#&gt; 
-#&gt; $label
-#&gt; [1] ""
-#&gt; 
-#&gt; $links
-#&gt; $links$code_list
-#&gt; $links$code_list$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter"
-#&gt; 
-#&gt; 
-#&gt; $links$datasets
-#&gt; $links$datasets$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2/datasets"
-#&gt; 
-#&gt; 
-#&gt; $links$self
-#&gt; $links$self$href
-#&gt; [1] "https://api.beta.ons.gov.uk/v1/code-lists/quarter/editions/one-off/codes/q2"
-#&gt; 
-#&gt; $links$self$id
-#&gt; [1] "q2"
-#&gt; 
-#&gt; 
-#&gt; </div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error: Invalid `id` see `ons_ids()`.</span></div><div class='input'><span class='fu'>ons_code</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span>, code <span class='op'>=</span> <span class='st'>"q2"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: Invalid `id` see `ons_ids()`.</span></div><div class='input'>
 <span class='fu'>ons_code_dataset</span><span class='op'>(</span>id <span class='op'>=</span> <span class='st'>"quarter"</span>, edition <span class='op'>=</span> <span class='st'>"one-off"</span>, code <span class='op'>=</span> <span class='st'>"q2"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; list()</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='error'>Error: Invalid `id` see `ons_ids()`.</span></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
