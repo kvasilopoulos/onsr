@@ -51,5 +51,11 @@ ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time =
 
 # Or can use a wildcard for the time
 ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
+
 }
+\dontrun{
+# Very large files may cause a problem (this does not work always)
+ons_get_obs("trade", geography = "K02000001", time = "Oct-11", countriesandterritories = "AD", direction = "EX", standardindustrialtradeclassification = "00")
+}
+
 }

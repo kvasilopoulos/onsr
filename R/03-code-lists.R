@@ -25,6 +25,7 @@
 ons_codelists <- function() {
   req <- build_base_request(`code-lists` = EMPTY)
   res <- make_request(req, limit = 80)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items$links$self$id
 }
@@ -35,6 +36,7 @@ ons_codelist <- function(id = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw
 }
@@ -45,6 +47,7 @@ ons_codelist_editions <- function(id = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items
 }
@@ -55,6 +58,7 @@ ons_codelist_edition <- function(id = NULL, edition = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = edition)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw
 }
@@ -90,6 +94,7 @@ ons_codes <- function(id = NULL, edition = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id,  editions = edition, codes = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items
 }
@@ -100,6 +105,7 @@ ons_code <- function(id = NULL, edition = NULL, code = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id,  editions = edition, codes = code)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw
 }
@@ -110,6 +116,7 @@ ons_code_dataset <- function(id = NULL, edition = NULL, code = NULL) {
   assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = edition, codes = code, datasets = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items
 }

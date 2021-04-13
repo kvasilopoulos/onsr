@@ -44,6 +44,7 @@ ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOpt
   assert_get_id(id)
   req <- build_request(id, edition, version)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   read_csv_silent(raw$downloads$csv$href, ons_read, ...)
 }
@@ -59,12 +60,18 @@ ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOpt
 #' ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
 #'
 #' }
+#' \dontrun{
+#' # Very large files may cause a problem (this does not work always)
+#' ons_get_obs("trade", geography = "K02000001", time = "Oct-11", countriesandterritories = "AD", direction = "EX", standardindustrialtradeclassification = "00")
+#' }
+#'
 ons_get_obs <- function(id = NULL, edition = NULL, version = NULL, ...) {
   assert_get_id(id)
   base <- build_request(id, edition, version)
   obs <- build_request_obs(id, ...)
   req <- paste0(base, "/observations?", obs)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   cat_ratio_obs(raw)
   as_tibble(raw$observations)
@@ -131,6 +138,7 @@ ons_dim <- function(id = NULL, edition = NULL, version = NULL) {
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, dimensions = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items$name
 }
@@ -149,6 +157,7 @@ ons_dim_opts <- function(id = NULL, edition = NULL, version = NULL, dimension = 
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, dimensions = dimension, options = EMPTY)
   res <- make_request(req, offset = offset, limit = limit)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   cat_ratio(raw)
   raw$items$option
@@ -161,6 +170,7 @@ ons_meta <- function(id = NULL, edition = NULL, version = NULL) {
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, metadata = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw
 }

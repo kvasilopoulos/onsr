@@ -23,6 +23,7 @@
 ons_datasets <- function() {
   req <- build_base_request(datasets = EMPTY)
   res <- make_request(req, limit = 60)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   tbl <- as_tibble(raw$items)
   tbl$links <- as_tibble(tbl$links)
@@ -53,6 +54,7 @@ ons_ids <- function() {
 #' }
 ons_desc <- function(id = NULL) {
   x <- ons_datasets()
+  x %||% return(invisible(NULL))
   assert_valid_id(id, x)
 
   line <- x[which(x$id == id),]
@@ -73,6 +75,7 @@ ons_desc <- function(id = NULL) {
 ons_editions <- function(id = NULL) {
   req <- build_base_request(datasets = id, editions = EMPTY)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items$edition
 }
@@ -98,6 +101,7 @@ ons_editions <- function(id = NULL) {
 #' @export
 ons_latest_href <- function(id = NULL) {
   x <- ons_datasets()
+  x %||% return(invisible(NULL))
   assert_valid_id(id, x)
   id_num <- id_number(id, x)
   x$links$latest_version$href[id_num]
@@ -107,6 +111,7 @@ ons_latest_href <- function(id = NULL) {
 #' @rdname ons_latest
 ons_latest_version <- function(id = NULL) {
   href <- ons_latest_href(id)
+  href %||% return(invisible(NULL))
   gsub(".*versions/(.+)", "\\1", href)
 }
 
@@ -114,6 +119,7 @@ ons_latest_version <- function(id = NULL) {
 #' @rdname ons_latest
 ons_latest_edition <- function(id = NULL) {
   href <- ons_latest_href(id)
+  href %||% return(invisible(NULL))
   gsub(".*editions/(.+)/versions.*", "\\1", href)
 }
 

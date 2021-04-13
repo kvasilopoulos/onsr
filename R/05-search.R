@@ -32,6 +32,7 @@ ons_search <- function(id, edition = NULL, version = NULL, name = NULL, query = 
     versions = version, dimensions = name)
   req <- paste0(base, "?q=", query)
   res <- make_request(req)
+  res %||% return(invisible(NULL))
   raw <- process_response(res)
   raw$items
 }
