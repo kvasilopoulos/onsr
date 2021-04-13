@@ -7,7 +7,7 @@
 ons_browse()
 }
 \value{
-The url of the webpage
+An atomic character vector with the url of the webpage
 }
 \description{
 This function take you to the ONS' developer webpage.

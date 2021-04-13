@@ -10,7 +10,7 @@ ons_browse_qmi(id = NULL)
 \item{id}{\verb{[character]}     Id that represents a dataset.}
 }
 \value{
-The url of the webpage
+An atomic character vector url with of the webpage
 }
 \description{
 This function take you to the QMI.
