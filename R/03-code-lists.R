@@ -32,6 +32,7 @@ ons_codelists <- function() {
 #' @rdname ons_codelists
 #' @export
 ons_codelist <- function(id = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id)
   res <- make_request(req)
   raw <- process_response(res)
@@ -41,6 +42,7 @@ ons_codelist <- function(id = NULL) {
 #' @rdname ons_codelists
 #' @export
 ons_codelist_editions <- function(id = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)
@@ -50,6 +52,7 @@ ons_codelist_editions <- function(id = NULL) {
 #' @rdname ons_codelists
 #' @export
 ons_codelist_edition <- function(id = NULL, edition = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = edition)
   res <- make_request(req)
   raw <- process_response(res)
@@ -84,6 +87,7 @@ ons_codelist_edition <- function(id = NULL, edition = NULL) {
 #' ons_code_dataset(id = "quarter", edition = "one-off", code = "q2")
 #'}
 ons_codes <- function(id = NULL, edition = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id,  editions = edition, codes = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)
@@ -93,6 +97,7 @@ ons_codes <- function(id = NULL, edition = NULL) {
 #' @rdname ons_codes
 #' @export
 ons_code <- function(id = NULL, edition = NULL, code = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id,  editions = edition, codes = code)
   res <- make_request(req)
   raw <- process_response(res)
@@ -102,6 +107,7 @@ ons_code <- function(id = NULL, edition = NULL, code = NULL) {
 #' @rdname ons_codes
 #' @export
 ons_code_dataset <- function(id = NULL, edition = NULL, code = NULL) {
+  assert_valid_id(id)
   req <- build_base_request(`code-lists` = id, editions = edition, codes = code, datasets = EMPTY)
   res <- make_request(req)
   raw <- process_response(res)

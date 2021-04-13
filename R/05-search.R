@@ -22,9 +22,9 @@
 #' ons_search("cpih01", name = "aggregate", query = "cpih1dim1A0")
 #' }
 ons_search <- function(id, edition = NULL, version = NULL, name = NULL, query = NULL) {
+  assert_valid_id(id)
   edition <- edition %||% ons_latest_edition(id)
   version <- version %||% ons_latest_version(id)
-
   stopifnot(any(name %in% ons_dim(id, edition, version)))
 
   base <- build_base_request(

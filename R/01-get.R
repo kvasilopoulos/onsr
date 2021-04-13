@@ -41,6 +41,7 @@
 #' ons_get(id = "cpih01", version = "5")
 #'}
 ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOption("onsr.read"), ...) {
+  assert_get_id(id)
   req <- build_request(id, edition, version)
   res <- make_request(req)
   raw <- process_response(res)
@@ -56,8 +57,10 @@ ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOpt
 #'
 #' # Or can use a wildcard for the time
 #' ons_get_obs("cpih01", geography = "K02000001", aggregate = "cpih1dim1A0", time = "*")
+#'
 #' }
 ons_get_obs <- function(id = NULL, edition = NULL, version = NULL, ...) {
+  assert_get_id(id)
   base <- build_request(id, edition, version)
   obs <- build_request_obs(id, ...)
   req <- paste0(base, "/observations?", obs)
@@ -73,7 +76,7 @@ build_request_obs <- function(id, ...) {
 
   all_dims <- ons_dim(id)
   if(!all(all_dims %in% nms)) {
-   stop(" The dimensions have been misspecified, see `ons_dim()`.", call. = FALSE)
+   stop("The dimensions have been misspecified, see `ons_dim()`.", call. = FALSE)
   }
 
   plen <- length(params)
@@ -124,6 +127,7 @@ build_request_obs <- function(id, ...) {
 #' ons_meta(id = "cpih01")
 #'
 ons_dim <- function(id = NULL, edition = NULL, version = NULL) {
+  assert_valid_id(id)
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, dimensions = EMPTY)
   res <- make_request(req)
@@ -134,6 +138,14 @@ ons_dim <- function(id = NULL, edition = NULL, version = NULL) {
 #' @rdname ons_extra
 #' @export
 ons_dim_opts <- function(id = NULL, edition = NULL, version = NULL, dimension = NULL, limit = NULL, offset = NULL) {
+  assert_valid_id(id)
+  if(is.null(dimension)) {
+    stop("`dimension` cannot be NULL.", call. = FALSE)
+  }
+  if(!dimension %in% ons_dim(id)) {
+    stop("The `dimension` argument is mispecified, see `ons_dim()` for available dimensions",
+         call. = FALSE)
+  }
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, dimensions = dimension, options = EMPTY)
   res <- make_request(req, offset = offset, limit = limit)
@@ -145,6 +157,7 @@ ons_dim_opts <- function(id = NULL, edition = NULL, version = NULL, dimension = 
 #' @rdname ons_extra
 #' @export
 ons_meta <- function(id = NULL, edition = NULL, version = NULL) {
+  assert_valid_id(id)
   req <- build_request(id, edition, version)
   req <- extend_request_dots(req, metadata = EMPTY)
   res <- make_request(req)
