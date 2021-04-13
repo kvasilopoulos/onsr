@@ -9,8 +9,11 @@ ons_browse_qmi(id = NULL)
 \arguments{
 \item{id}{\verb{[character]}     Id that represents a dataset.}
 }
+\value{
+The url of the webpage
+}
 \description{
-This function take you to the QMI and return the URL invisibly.
+This function take you to the QMI.
 }
 \examples{
 \donttest{

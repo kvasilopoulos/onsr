@@ -6,9 +6,11 @@
 \usage{
 ons_browse()
 }
+\value{
+The url of the webpage
+}
 \description{
-This function take you to the ONS' developer webpage and
-return the URL invisibly.
+This function take you to the ONS' developer webpage.
 }
 \examples{
 \donttest{
