@@ -42,6 +42,9 @@ This is a basic example which shows you how to download data with `onsr`.
 library(onsr)
 
 ons_get(id = "ageing-population-estimates")
+
+# All the available id names
+ons_ids()
 ```
 
 ## Rate limiting
