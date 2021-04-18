@@ -28,12 +28,19 @@ The goal of onsr is to to provide a client for the 'Office of National Statistic
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+``` r
+# Install release version from CRAN
+install.packages("exuber")
+```
+
+You can install the development version of exuber from GitHub.
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("kvasilopoulos/onsr")
 ```
+If you encounter a clear bug, please file a reproducible example on [GitHub](https://github.com/kvasilopoulos/onsr/issues).
+
 ## Example
 
 This is a basic example which shows you how to download data with `onsr`.

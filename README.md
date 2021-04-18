@@ -21,12 +21,20 @@ Statistics’ (‘ONS’) API <https://api.beta.ons.gov.uk/v1>.
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+``` r
+# Install release version from CRAN
+install.packages("exuber")
+```
+
+You can install the development version of exuber from GitHub.
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("kvasilopoulos/onsr")
 ```
+
+If you encounter a clear bug, please file a reproducible example on
+[GitHub](https://github.com/kvasilopoulos/onsr/issues).
 
 ## Example
 
