@@ -1,6 +1,6 @@
 Package: onsr
 Title: Client for the 'ONS' API
-Version: 1.0.0.9000
+Version: 1.0.1
 Authors@R: 
     person(given = "Kostas",
            family = "Vasilopoulos",
