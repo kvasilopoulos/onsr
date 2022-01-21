@@ -2,7 +2,7 @@
 
 # onsr 1.0.1
 
-* Fix issue with filesize checks.
+* Fix issue with file size checks.
 
 # onsr 1.0.0
 

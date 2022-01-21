@@ -1,5 +1,5 @@
-skip_if_interactive() # to avoid opening tabs
-
+# skip_if_interactive() # to avoid opening tabs
+skip(TRUE)
 test_that("browse url", {
 
   expect_identical(
