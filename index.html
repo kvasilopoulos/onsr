@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">onsr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -40,7 +42,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -53,8 +55,8 @@
   <a href="news/index.html">News</a>
 </li>
 <li>
-  <a href="https://github.com/kvasilopoulos/onsr">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/kvasilopoulos/onsr" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,33 +72,33 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="onsr" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#onsr" class="anchor"></a>onsr</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="onsr">onsr<a class="anchor" aria-label="anchor" href="#onsr"></a>
+</h1></div>
 <!-- badges: start -->
 
 <blockquote>
 <p><strong><em>NOTE:</em></strong> This API is currently in Beta and still being developed. Please be aware that as a result of this there may occasionally be breaking changes.</p>
 </blockquote>
-<p>The goal of onsr is to to provide a client for the ‘Office of National Statistics’ (‘ONS’) API <a href="https://api.beta.ons.gov.uk/v1" class="uri">https://api.beta.ons.gov.uk/v1</a>.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p>The goal of onsr is to to provide a client for the ‘Office of National Statistics’ (‘ONS’) API <a href="https://api.beta.ons.gov.uk/v1" class="external-link uri">https://api.beta.ons.gov.uk/v1</a>.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Install release version from CRAN</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"exuber"</span><span class="op">)</span></code></pre></div>
-<p>You can install the development version of exuber from GitHub.</p>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"onsr"</span><span class="op">)</span></code></pre></div>
+<p>You can install the development version of <code>onsr</code> from GitHub.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kvasilopoulos/onsr"</span><span class="op">)</span></code></pre></div>
-<p>If you encounter a clear bug, please file a reproducible example on <a href="https://github.com/kvasilopoulos/onsr/issues">GitHub</a>.</p>
+<p>If you encounter a clear bug, please file a reproducible example on <a href="https://github.com/kvasilopoulos/onsr/issues" class="external-link">GitHub</a>.</p>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>This is a basic example which shows you how to download data with <code>onsr</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kvasilopoulos.github.io/onsr/">onsr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kvasilopoulos.github.io/onsr/">onsr</a></span><span class="op">)</span>
 
 <span class="fu"><a href="reference/ons_get.html">ons_get</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"ageing-population-estimates"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 18,960 x 12</span>
@@ -117,51 +119,54 @@
 
 <span class="co"># All the available id names</span>
 <span class="fu"><a href="reference/ons_datasets.html">ons_ids</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "ageing-population-estimates"                  </span>
-<span class="co">#&gt;  [2] "ageing-population-projections"                </span>
-<span class="co">#&gt;  [3] "older-people-economic-activity"               </span>
-<span class="co">#&gt;  [4] "older-people-net-internal-migration"          </span>
-<span class="co">#&gt;  [5] "older-people-sex-ratios"                      </span>
-<span class="co">#&gt;  [6] "projections-older-people-in-single-households"</span>
-<span class="co">#&gt;  [7] "projections-older-people-sex-ratios"          </span>
-<span class="co">#&gt;  [8] "weekly-deaths-age-sex"                        </span>
-<span class="co">#&gt;  [9] "weekly-deaths-region"                         </span>
-<span class="co">#&gt; [10] "online-job-advert-estimates"                  </span>
-<span class="co">#&gt; [11] "faster-indicators-shipping-data"              </span>
-<span class="co">#&gt; [12] "cpih01"                                       </span>
-<span class="co">#&gt; [13] "mid-year-pop-est"                             </span>
-<span class="co">#&gt; [14] "weekly-deaths-health-board"                   </span>
-<span class="co">#&gt; [15] "weekly-deaths-local-authority"                </span>
-<span class="co">#&gt; [16] "regional-gdp-by-year"                         </span>
-<span class="co">#&gt; [17] "wellbeing-local-authority"                    </span>
-<span class="co">#&gt; [18] "index-private-housing-rental-prices"          </span>
-<span class="co">#&gt; [19] "suicides-in-the-uk"                           </span>
-<span class="co">#&gt; [20] "childrens-wellbeing"                          </span>
-<span class="co">#&gt; [21] "gdp-to-four-decimal-places"                   </span>
-<span class="co">#&gt; [22] "generational-income"                          </span>
-<span class="co">#&gt; [23] "health-accounts"                              </span>
-<span class="co">#&gt; [24] "wellbeing-quarterly"                          </span>
+<span class="co">#&gt;  [1] "wellbeing-quarterly"                          </span>
+<span class="co">#&gt;  [2] "wellbeing-local-authority"                    </span>
+<span class="co">#&gt;  [3] "weekly-deaths-region"                         </span>
+<span class="co">#&gt;  [4] "weekly-deaths-local-authority"                </span>
+<span class="co">#&gt;  [5] "weekly-deaths-health-board"                   </span>
+<span class="co">#&gt;  [6] "weekly-deaths-age-sex"                        </span>
+<span class="co">#&gt;  [7] "uk-spending-on-cards"                         </span>
+<span class="co">#&gt;  [8] "traffic-camera-activity"                      </span>
+<span class="co">#&gt;  [9] "trade"                                        </span>
+<span class="co">#&gt; [10] "tax-benefits-statistics"                      </span>
+<span class="co">#&gt; [11] "suicides-in-the-uk"                           </span>
+<span class="co">#&gt; [12] "regional-gdp-by-year"                         </span>
+<span class="co">#&gt; [13] "regional-gdp-by-quarter"                      </span>
+<span class="co">#&gt; [14] "projections-older-people-sex-ratios"          </span>
+<span class="co">#&gt; [15] "projections-older-people-in-single-households"</span>
+<span class="co">#&gt; [16] "output-in-the-construction-industry"          </span>
+<span class="co">#&gt; [17] "online-job-advert-estimates"                  </span>
+<span class="co">#&gt; [18] "older-people-sex-ratios"                      </span>
+<span class="co">#&gt; [19] "older-people-net-internal-migration"          </span>
+<span class="co">#&gt; [20] "older-people-economic-activity"               </span>
+<span class="co">#&gt; [21] "mid-year-pop-est"                             </span>
+<span class="co">#&gt; [22] "life-expectancy-by-local-authority"           </span>
+<span class="co">#&gt; [23] "labour-market"                                </span>
+<span class="co">#&gt; [24] "index-private-housing-rental-prices"          </span>
 <span class="co">#&gt; [25] "house-prices-local-authority"                 </span>
-<span class="co">#&gt; [26] "regional-gdp-by-quarter"                      </span>
-<span class="co">#&gt; [27] "labour-market"                                </span>
-<span class="co">#&gt; [28] "tax-benefits-statistics"                      </span>
-<span class="co">#&gt; [29] "ashe-tables-26"                               </span>
-<span class="co">#&gt; [30] "ashe-tables-25"                               </span>
-<span class="co">#&gt; [31] "ashe-tables-27-and-28"                        </span>
-<span class="co">#&gt; [32] "trade"                                        </span>
-<span class="co">#&gt; [33] "ashe-tables-7-and-8"                          </span>
-<span class="co">#&gt; [34] "ashe-tables-3"                                </span>
-<span class="co">#&gt; [35] "ashe-tables-11-and-12"                        </span>
-<span class="co">#&gt; [36] "ashe-tables-20"                               </span>
-<span class="co">#&gt; [37] "ashe-tables-9-and-10"                         </span>
-<span class="co">#&gt; [38] "ashe-table-5"                                 </span>
-<span class="co">#&gt; [39] "life-expectancy-by-local-authority"           </span>
-<span class="co">#&gt; [40] "gdp-by-local-authority"                       </span>
-<span class="co">#&gt; [41] "gva-by-industry-by-local-authority"</span></code></pre></div>
+<span class="co">#&gt; [26] "health-accounts"                              </span>
+<span class="co">#&gt; [27] "gva-by-industry-by-local-authority"           </span>
+<span class="co">#&gt; [28] "generational-income"                          </span>
+<span class="co">#&gt; [29] "gdp-to-four-decimal-places"                   </span>
+<span class="co">#&gt; [30] "gdp-by-local-authority"                       </span>
+<span class="co">#&gt; [31] "faster-indicators-shipping-data"              </span>
+<span class="co">#&gt; [32] "cpih01"                                       </span>
+<span class="co">#&gt; [33] "childrens-wellbeing"                          </span>
+<span class="co">#&gt; [34] "ashe-tables-9-and-10"                         </span>
+<span class="co">#&gt; [35] "ashe-tables-7-and-8"                          </span>
+<span class="co">#&gt; [36] "ashe-tables-3"                                </span>
+<span class="co">#&gt; [37] "ashe-tables-27-and-28"                        </span>
+<span class="co">#&gt; [38] "ashe-tables-26"                               </span>
+<span class="co">#&gt; [39] "ashe-tables-25"                               </span>
+<span class="co">#&gt; [40] "ashe-tables-20"                               </span>
+<span class="co">#&gt; [41] "ashe-tables-11-and-12"                        </span>
+<span class="co">#&gt; [42] "ashe-table-5"                                 </span>
+<span class="co">#&gt; [43] "ageing-population-projections"                </span>
+<span class="co">#&gt; [44] "ageing-population-estimates"</span></code></pre></div>
 </div>
-<div id="rate-limiting" class="section level2">
-<h2 class="hasAnchor">
-<a href="#rate-limiting" class="anchor"></a>Rate limiting</h2>
+<div class="section level2">
+<h2 id="rate-limiting">Rate limiting<a class="anchor" aria-label="anchor" href="#rate-limiting"></a>
+</h2>
 <p>The ONS API applies rate limiting to ensure a high quality service is delivered to all users and to protect client applications from unexpected loops.</p>
 <p>The following rate limits have been implemented:</p>
 <ul>
@@ -175,49 +180,59 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=onsr">https://​cloud.r-project.org/​package=onsr</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/kvasilopoulos/onsr/">https://​github.com/​kvasilopoulos/​onsr/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/kvasilopoulos/onsr/issues">https://​github.com/​kvasilopoulos/​onsr/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=onsr" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/kvasilopoulos/onsr/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/kvasilopoulos/onsr/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>GPL (&gt;= 3)</small></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://kvasilopoulos.com/">Kostas Vasilopoulos</a> <br><small class="roles"> Author, maintainer </small>  </li>
+<li><a href="authors.html#citation">Citing onsr</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/kvasilopoulos/onsr/actions"><img src="https://github.com/kvasilopoulos/onsr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=onsr"><img src="https://www.r-pkg.org/badges/version/onsr" alt="CRAN status"></a></li>
+<li>
+<a href="https://kvasilopoulos.com/" class="external-link">Kostas Vasilopoulos</a> <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/kvasilopoulos/onsr/actions" class="external-link"><img src="https://github.com/kvasilopoulos/onsr/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=onsr" class="external-link"><img src="https://www.r-pkg.org/badges/version/onsr" alt="CRAN status"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://kvasilopoulos.com/">Kostas Vasilopoulos</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://kvasilopoulos.com/" class="external-link">Kostas Vasilopoulos</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -225,6 +240,8 @@
 
   
 
+
+  
 
   </body>
 </html>

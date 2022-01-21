@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://kvasilopoulos.github.io/onsr/404.html</loc>
+  </url>
+  <url>
+    <loc>https://kvasilopoulos.github.io/onsr/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://kvasilopoulos.github.io/onsr/authors.html</loc>
+  </url>
+  <url>
     <loc>https://kvasilopoulos.github.io/onsr/index.html</loc>
   </url>
   <url>
+    <loc>https://kvasilopoulos.github.io/onsr/news/index.html</loc>
+  </url>
+  <url>
     <loc>https://kvasilopoulos.github.io/onsr/reference/dataset_size.html</loc>
+  </url>
+  <url>
+    <loc>https://kvasilopoulos.github.io/onsr/reference/index.html</loc>
   </url>
   <url>
     <loc>https://kvasilopoulos.github.io/onsr/reference/ons_browse.html</loc>
