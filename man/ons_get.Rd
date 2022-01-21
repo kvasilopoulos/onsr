@@ -28,7 +28,7 @@ becoming available.}
 
 \item{ons_read}{\verb{[character]}. Reading backend, one of \code{readr}, \code{data.table} or \code{vroom}.}
 
-\item{...}{Further arguments passed on the reading functions.}
+\item{...}{Further arguments passed on the methods.}
 }
 \value{
 A tibble with the dataset in tidy format.

@@ -8,17 +8,21 @@
 read_csv_silent <- function(x, type = getOption("onsr.read"), ...) {
 
   type <- match.arg(type, c("readr", "vroom", "data.table"))
-  suppressMessages({
-    if(type == "vroom") {
-      out <- vroom::vroom(x, ...)
-    } else if (type == "data.table"){
-      need_pkg("data.table")
-      out <- data.table::fread(x, ...)
-    } else if (type == "readr"){
-      need_pkg("readr")
-      out <- readr::read_csv(x, ...)
-    }
-  })
+  out <- tryCatch({
+    suppressMessages({
+      if(type == "vroom") {
+        vroom::vroom(x, ...)
+      } else if (type == "data.table"){
+        need_pkg("data.table")
+        data.table::fread(x, ...)
+      } else if (type == "readr"){
+        need_pkg("readr")
+        readr::read_csv(x, ...)
+      }
+    })
+    },
+    error  = function(e) e
+  )
   out
 }
 
@@ -79,9 +83,10 @@ restrict_size <- function(gt, type = c("Gb$", "Mb$")) {
   type <- match.arg(type)
   size <- dataset_size$Size
   idx <- grep(type, size)
+  candidates <- dataset_size$Id[idx]
   num <- as.numeric(gsub("(?=[GMK]b).+", "\\1", size, perl = TRUE))
   bool <- num[idx] > gt
-  idx[bool]
+  candidates[bool]
 }
 
 ask_yesno <- function(...) {
@@ -108,19 +113,26 @@ assert_valid_id <- function(id = NULL, ons_ds = NULL) {
   }
 }
 
-assert_filesize_id <- function(id, ons_ds = NULL) {
+assert_filesize_id <- function(id, ons_ds = NULL, force = TRUE) {
   if(is.null(ons_ds)) {
     ids <- ons_ids()
   }else{
     ids <- ons_ds$id
   }
   large_ids <- restrict_size(1, "Gb$")
-  id_size <- dataset_size$Size[which(id == ids)]
+  id_size <- dataset_size$Size[which(dataset_size$Id == id)]
   if(id %in% ids[large_ids]) {
     if (interactive()) {
       ans <- ask_yesno(
         paste0( "File size is very large (", id_size, ") and may cause errors.",
                 " Do you want to proceed?"))
+    }else{
+      if(force) {
+        return(NULL)
+      }else{
+        ans <- FALSE
+        stop("File size is very large, exiting. Use `force=TRUE` to download")
+      }
     }
     if(!ans) {
       stop("user choose to exit", call. = FALSE)
@@ -132,8 +144,8 @@ assert_filesize_id <- function(id, ons_ds = NULL) {
   }
 }
 
-assert_get_id <- function(id) {
+assert_get_id <- function(id, force = FALSE) {
   ons_ds <- ons_datasets()
   assert_valid_id(id, ons_ds)
-  assert_filesize_id(id, ons_ds)
+  assert_filesize_id(id, ons_ds, force = force)
 }

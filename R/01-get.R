@@ -26,7 +26,7 @@
 #'
 #' @param ...
 #'
-#' Further arguments passed on the reading functions.
+#' Further arguments passed on the methods.
 #'
 #'
 #'
@@ -41,7 +41,7 @@
 #' ons_get(id = "cpih01", version = "5")
 #'}
 ons_get <- function(id = NULL, edition = NULL, version = NULL, ons_read = getOption("onsr.read"), ...) {
-  assert_get_id(id)
+  assert_get_id(id, ...)
   req <- build_request(id, edition, version)
   res <- make_request(req)
   res %||% return(invisible(NULL))
