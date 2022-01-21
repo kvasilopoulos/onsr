@@ -30,10 +30,10 @@ The goal of onsr is to to provide a client for the 'Office of National Statistic
 
 ``` r
 # Install release version from CRAN
-install.packages("exuber")
+install.packages("onsr")
 ```
 
-You can install the development version of exuber from GitHub.
+You can install the development version of `onsr` from GitHub.
 
 ``` r
 # install.packages("devtools")

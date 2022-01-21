@@ -23,10 +23,10 @@ Statistics’ (‘ONS’) API <https://api.beta.ons.gov.uk/v1>.
 
 ``` r
 # Install release version from CRAN
-install.packages("exuber")
+install.packages("onsr")
 ```
 
-You can install the development version of exuber from GitHub.
+You can install the development version of `onsr` from GitHub.
 
 ``` r
 # install.packages("devtools")
@@ -63,47 +63,50 @@ ons_get(id = "ageing-population-estimates")
 
 # All the available id names
 ons_ids()
-#>  [1] "ageing-population-estimates"                  
-#>  [2] "ageing-population-projections"                
-#>  [3] "older-people-economic-activity"               
-#>  [4] "older-people-net-internal-migration"          
-#>  [5] "older-people-sex-ratios"                      
-#>  [6] "projections-older-people-in-single-households"
-#>  [7] "projections-older-people-sex-ratios"          
-#>  [8] "weekly-deaths-age-sex"                        
-#>  [9] "weekly-deaths-region"                         
-#> [10] "online-job-advert-estimates"                  
-#> [11] "faster-indicators-shipping-data"              
-#> [12] "cpih01"                                       
-#> [13] "mid-year-pop-est"                             
-#> [14] "weekly-deaths-health-board"                   
-#> [15] "weekly-deaths-local-authority"                
-#> [16] "regional-gdp-by-year"                         
-#> [17] "wellbeing-local-authority"                    
-#> [18] "index-private-housing-rental-prices"          
-#> [19] "suicides-in-the-uk"                           
-#> [20] "childrens-wellbeing"                          
-#> [21] "gdp-to-four-decimal-places"                   
-#> [22] "generational-income"                          
-#> [23] "health-accounts"                              
-#> [24] "wellbeing-quarterly"                          
+#>  [1] "wellbeing-quarterly"                          
+#>  [2] "wellbeing-local-authority"                    
+#>  [3] "weekly-deaths-region"                         
+#>  [4] "weekly-deaths-local-authority"                
+#>  [5] "weekly-deaths-health-board"                   
+#>  [6] "weekly-deaths-age-sex"                        
+#>  [7] "uk-spending-on-cards"                         
+#>  [8] "traffic-camera-activity"                      
+#>  [9] "trade"                                        
+#> [10] "tax-benefits-statistics"                      
+#> [11] "suicides-in-the-uk"                           
+#> [12] "regional-gdp-by-year"                         
+#> [13] "regional-gdp-by-quarter"                      
+#> [14] "projections-older-people-sex-ratios"          
+#> [15] "projections-older-people-in-single-households"
+#> [16] "output-in-the-construction-industry"          
+#> [17] "online-job-advert-estimates"                  
+#> [18] "older-people-sex-ratios"                      
+#> [19] "older-people-net-internal-migration"          
+#> [20] "older-people-economic-activity"               
+#> [21] "mid-year-pop-est"                             
+#> [22] "life-expectancy-by-local-authority"           
+#> [23] "labour-market"                                
+#> [24] "index-private-housing-rental-prices"          
 #> [25] "house-prices-local-authority"                 
-#> [26] "regional-gdp-by-quarter"                      
-#> [27] "labour-market"                                
-#> [28] "tax-benefits-statistics"                      
-#> [29] "ashe-tables-26"                               
-#> [30] "ashe-tables-25"                               
-#> [31] "ashe-tables-27-and-28"                        
-#> [32] "trade"                                        
-#> [33] "ashe-tables-7-and-8"                          
-#> [34] "ashe-tables-3"                                
-#> [35] "ashe-tables-11-and-12"                        
-#> [36] "ashe-tables-20"                               
-#> [37] "ashe-tables-9-and-10"                         
-#> [38] "ashe-table-5"                                 
-#> [39] "life-expectancy-by-local-authority"           
-#> [40] "gdp-by-local-authority"                       
-#> [41] "gva-by-industry-by-local-authority"
+#> [26] "health-accounts"                              
+#> [27] "gva-by-industry-by-local-authority"           
+#> [28] "generational-income"                          
+#> [29] "gdp-to-four-decimal-places"                   
+#> [30] "gdp-by-local-authority"                       
+#> [31] "faster-indicators-shipping-data"              
+#> [32] "cpih01"                                       
+#> [33] "childrens-wellbeing"                          
+#> [34] "ashe-tables-9-and-10"                         
+#> [35] "ashe-tables-7-and-8"                          
+#> [36] "ashe-tables-3"                                
+#> [37] "ashe-tables-27-and-28"                        
+#> [38] "ashe-tables-26"                               
+#> [39] "ashe-tables-25"                               
+#> [40] "ashe-tables-20"                               
+#> [41] "ashe-tables-11-and-12"                        
+#> [42] "ashe-table-5"                                 
+#> [43] "ageing-population-projections"                
+#> [44] "ageing-population-estimates"
 ```
 
 ## Rate limiting

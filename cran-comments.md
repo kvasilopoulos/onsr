@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS MS install, R 4.0.3
+* local OS MS install, R 4.1.0
 * Continuous Integration
   * GitHub actions (ubuntu-20.04): release, devel
   * GitHub actions (windows): release
@@ -12,13 +12,4 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-N  checking CRAN incoming feasibility
-   Maintainer: 'Kostas Vasilopoulos <k.vasilopoulo@gmail.com>'
-   
-   New submission
-
-## Comments
-
-* Added \value to all .Rd files.
+0 errors | 0 warnings | 0 notes

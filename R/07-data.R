@@ -1,4 +1,4 @@
-#' The Dateset with a size column
+#' The Dataset with a size column
 #'
 #' @keywords internal
 "dataset_size"

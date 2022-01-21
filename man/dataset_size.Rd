@@ -3,7 +3,7 @@
 \docType{data}
 \name{dataset_size}
 \alias{dataset_size}
-\title{The Dateset with a size column}
+\title{The Dataset with a size column}
 \format{
 An object of class \code{data.frame} with 41 rows and 3 columns.
 }
@@ -11,6 +11,6 @@ An object of class \code{data.frame} with 41 rows and 3 columns.
 dataset_size
 }
 \description{
-The Dateset with a size column
+The Dataset with a size column
 }
 \keyword{internal}
