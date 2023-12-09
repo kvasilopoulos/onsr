@@ -25,6 +25,7 @@ ons_browse <- function() {
 #' }
 ons_browse_qmi <- function(id = NULL) {
   ons_ds <- ons_datasets()
+  ons_ds %||% return(invisible(NULL))
   assert_valid_id(id, ons_ds)
   id_num <- id_number(id, ons_ds)
   view_url(ons_ds$qmi$href[id_num])

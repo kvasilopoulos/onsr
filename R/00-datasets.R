@@ -35,6 +35,7 @@ ons_datasets <- function() {
 #' @rdname ons_datasets
 ons_ids <- function() {
   x <- ons_datasets()
+  x %||% return(invisible(NULL))
   x$id
 }
 

@@ -99,6 +99,7 @@ assert_valid_id <- function(id = NULL, ons_ds = NULL) {
 
   if(is.null(ons_ds)) {
     ids <- ons_ids()
+    ids %||% return(invisible(NULL))
   }else{
     ids <- ons_ds$id
   }
@@ -116,6 +117,7 @@ assert_valid_id <- function(id = NULL, ons_ds = NULL) {
 assert_filesize_id <- function(id, ons_ds = NULL, force = TRUE) {
   if(is.null(ons_ds)) {
     ids <- ons_ids()
+    ids %||% return(invisible(NULL))
   }else{
     ids <- ons_ds$id
   }
@@ -146,6 +148,7 @@ assert_filesize_id <- function(id, ons_ds = NULL, force = TRUE) {
 
 assert_get_id <- function(id, force = FALSE) {
   ons_ds <- ons_datasets()
+  ons_ds %||% return(invisible(NULL))
   assert_valid_id(id, ons_ds)
   assert_filesize_id(id, ons_ds, force = force)
 }
