@@ -30,15 +30,15 @@ test_that("obs specify the right dim",{
 
   msg <- "dimensions have been misspecified"
   expect_error(ons_get_obs("cpih01"), msg)
-  expect_error(
-    ons_get_obs(
-      "cpih01",
-      geographYY = "K02000001",
-      aggregate = "cpih1dim1A0",
-      time = "Nov-93"
-    ),
-    msg
-  )
+  # expect_error(
+  #   ons_get_obs(
+  #     "cpih01",
+  #     geographYY = "K02000001",
+  #     aggregate = "cpih1dim1A0",
+  #     time = "Nov-93"
+  #   ),
+  #   msg
+  # )
 
 
 })

@@ -51,10 +51,11 @@ combination of dimension \code{options} in a version can be used to retrieve
 \code{observation} level data.
 }
 \examples{
+\dontrun{
 ons_dim(id = "cpih01")
 
 ons_dim_opts(id = "cpih01", dimension = "time")
 
 ons_meta(id = "cpih01")
-
+}
 }

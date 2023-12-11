@@ -1,6 +1,6 @@
 Package: onsr
 Title: Client for the 'ONS' API
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: 
     person(given = "Kostas",
            family = "Vasilopoulos",
@@ -18,7 +18,7 @@ Imports:
     tibble
 URL: https://kvasilopoulos.github.io/onsr/
 BugReports: https://github.com/kvasilopoulos/onsr/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Suggests: 
     testthat (>= 3.0.0),
     data.table,
