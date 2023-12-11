@@ -44,12 +44,15 @@ extend_request_dots <- function(pre, ...) {
 
 # Make Request ------------------------------------------------------------
 
+
 USER_AGENT = "onsr (https://github.com/kvasilopoulos/onsr)"
+
 
 #' @importFrom httr GET RETRY write_disk timeout
 try_VERB <- function(x, limit, offset, VERB = "GET", ...) {
   tryCatch(
     RETRY(VERB, url = x, timeout(10), quiet = TRUE,
+          config = httr::config(useragent = USER_AGENT),
           query = list(limit = limit, offset = offset), ...),
     error = function(err) conditionMessage(err),
     warning = function(warn) conditionMessage(warn)
@@ -59,6 +62,8 @@ try_VERB <- function(x, limit, offset, VERB = "GET", ...) {
 is_response <- function(x) {
   class(x) == "response"
 }
+
+
 
 
 #' @importFrom httr GET RETRY write_disk timeout
