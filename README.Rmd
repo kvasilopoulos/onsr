@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/kvasilopoulos/onsr/workflows/R-CMD-check/badge.svg)](https://github.com/kvasilopoulos/onsr/actions)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/onsr)](https://CRAN.R-project.org/package=onsr)
+[![R-CMD-check](https://github.com/kvasilopoulos/onsr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kvasilopoulos/onsr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 > **_NOTE:_** This API is currently in Beta and still being developed. Please be aware that as a result of this there may occasionally be breaking changes.
