@@ -25,7 +25,9 @@ ons_search <- function(id, edition = NULL, version = NULL, name = NULL, query = 
   assert_valid_id(id)
   edition <- edition %||% ons_latest_edition(id)
   version <- version %||% ons_latest_version(id)
-  stopifnot(any(name %in% ons_dim(id, edition, version)))
+  if (is.null(edition) || is.null(version)) {
+    stop("You must specify an `edition` and `version`.", call. = FALSE)
+  }
 
   base <- build_base_request(
     `dimension-search` = EMPTY, datasets = id, editions = edition,

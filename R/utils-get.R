@@ -70,7 +70,7 @@ is_response <- function(x) {
 make_request <- function(query, limit = NULL, offset = NULL, ...) {
 
   if (!curl::has_internet()) {
-    message("No internet connection.")
+    message("Unable to connect: Please ensure you have an active internet connection or access through a secure connection.")
     return(invisible(NULL))
   }
   resp <- try_VERB(query, limit = limit, offset = offset, ...)

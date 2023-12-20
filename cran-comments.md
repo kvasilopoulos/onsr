@@ -1,6 +1,6 @@
 ## Test environments
 
-* local OS MS install, R 4.1.0
+* local OS MS install, R 4.3.2
 * Continuous Integration
   * GitHub actions (ubuntu-20.04): release, devel
   * GitHub actions (windows): release
